@@ -9,6 +9,12 @@ class CompanyController extends Controller
     public function index(){
 
         return view('efris.company.index');
+
+    }
+
+    public function create(){
+
+        return view('efris.company.create');
         
     }
 }

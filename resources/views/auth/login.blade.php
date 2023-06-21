@@ -15,13 +15,13 @@
                         <form action="{{ url('postLogin') }}" method="POST">
                             @csrf
                             <div class="form-group">
-                                <input id="email" type="text" placeholder="Email" class="form-control "
-                                    name="username" value="admin" required autocomplete="email" autofocus>
+                                <input id="email" type="email" placeholder="Email" class="form-control "
+                                    name="email" value="alphaCoder@gmail.com" required autocomplete="email" autofocus>
                                 <i class="ik ik-user"></i>
                             </div>
                             <div class="form-group">
                                 <input id="password" type="password" placeholder="Password" class="form-control "
-                                    name="password" value="123456" required>
+                                    name="password" value="WebDev@2020" required>
                                 <i class="ik ik-lock"></i>
                             </div>
                             <div class="row">

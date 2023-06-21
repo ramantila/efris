@@ -36,7 +36,7 @@
             <div class="card">
                 <div class="card-header row">
                     <div class="col col-sm-2">
-                            <a href="{{ url('sales/create') }}" class="btn btn-sm btn-primary btn-rounded">Add Company </a>
+                            <a href="{{ url('companies/create') }}" class="btn btn-sm btn-primary btn-rounded">Add Company </a>
                     </div>
                     <div class="col col-sm-1">
                         <div class="card-options d-inline-block">
