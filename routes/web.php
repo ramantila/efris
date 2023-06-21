@@ -13,12 +13,87 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-// Route::get('/', function () {
-//     return view('welcome');
-// });
+//Route::get('/', function () {
+//    return view('authenticate.login');
+//});
+//
+//Auth::routes();
+
+Route::get('/', [App\Http\Controllers\LoginController::class, 'login'])->name('login');
+Route::post('/postLogin', [App\Http\Controllers\LoginController::class, 'postLogin'])->name('processLogin');
+Route::get('/home', [App\Http\Controllers\HomeController::class, 'postLogin'])->name('processLogin');
+
+Route::get('/dashboard', function () {
+    return view('dashboard');
+});
+
+//Route for Package
+Route::group(['prefix' => 'efris/packages-type'], function () {
+    Route::get('view', [App\Http\Controllers\PackageTypeController::class, 'index']);
+    Route::post('store',[App\Http\Controllers\PackageTypeController::class, 'store']);
+
+});
+
+//Route for Package
+Route::group(['prefix' => 'efris/package'], function () {
+    Route::get('view', [App\Http\Controllers\PackageController::class, 'index']);
+    Route::get('create', [App\Http\Controllers\PackageController::class, 'create']);
+    Route::post('store',[App\Http\Controllers\PackageController::class, 'store']);
+    Route::post('edit',[App\Http\Controllers\PackageController::class, 'edit']);
+    Route::post('update',[App\Http\Controllers\PackageController::class, 'update']);
+
+});
 
 
-//Route for Sales
-Route::group(['prefix' => 'company'], function () {
-    Route::get('view', [App\Http\Controllers\CompanyController::class, 'index']);
+
+//Route for Companies
+    Route::group(['prefix' => 'efris/companies'], function () {
+    Route::get('show', [App\Http\Controllers\CompanyController::class, 'index']);
+    Route::get('create', [App\Http\Controllers\CompanyController::class, 'create']);
+    Route::post('store',[App\Http\Controllers\CompanyController::class, 'store']);
+    Route::get('edit',[App\Http\Controllers\CompanyController::class, 'edit']);
+    Route::post('update',[App\Http\Controllers\CompanyController::class, 'update']);
+
+});
+
+
+//Route for Companies Types
+Route::group(['prefix' => 'efris/company-types'], function () {
+    Route::get('show', [App\Http\Controllers\Company_tpyesController::class, 'index']);
+    Route::get('create', [App\Http\Controllers\Company_tpyesController::class, 'create']);
+    Route::post('store',[App\Http\Controllers\Company_tpyesController::class, 'store']);
+    Route::get('edit',[App\Http\Controllers\Company_tpyesController::class, 'edit']);
+    Route::post('update',[App\Http\Controllers\Company_tpyesController::class, 'update']);
+});
+
+
+//Route for Branch
+Route::group(['prefix' => 'efris/branches'], function () {
+    Route::get('show', [App\Http\Controllers\BranchController::class, 'index']);
+    Route::get('create', [App\Http\Controllers\BranchController::class, 'create']);
+    Route::post('store',[App\Http\Controllers\BranchController::class, 'store']);
+    Route::get('edit/{id}',[App\Http\Controllers\BranchController::class, 'edit']);
+    Route::post('update/{id}',[App\Http\Controllers\BranchController::class, 'update']);
+});
+
+
+//Route for catalog
+Route::group(['prefix' => 'efris/product-catalogue'], function () {
+    Route::get('show', [App\Http\Controllers\Product_catalogueController::class, 'index']);
+    Route::get('create', [App\Http\Controllers\Product_catalogueController::class, 'create']);
+    Route::post('store',[App\Http\Controllers\Product_catalogueController::class, 'store']);
+    Route::get('edit',[App\Http\Controllers\Product_catalogueController::class, 'edit']);
+    Route::post('update',[App\Http\Controllers\Product_catalogueController::class, 'update']);
+
+});
+
+
+//Route for company products
+Route::group(['prefix' => 'efris/companyproducts'], function () {
+    Route::get('show', [App\Http\Controllers\CompamyproductController::class, 'index']);
+    Route::get('create', [App\Http\Controllers\CompamyproductController::class, 'create']);
+    Route::post('store',[App\Http\Controllers\CompamproductController::class, 'store']);
+    Route::get('edit',[App\Http\Controllers\CompamproductController::class, 'edit']);
+    Route::post('update',[App\Http\Controllers\CompamproductController::class, 'update']);
+
 });
