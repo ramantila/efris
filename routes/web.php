@@ -28,7 +28,7 @@ Route::get('/dashboard', function () {
 });
 
 //Route for Package
-Route::group(['prefix' => 'efris/packages-type'], function () {
+Route::group(['prefix' => 'packages-type'], function () {
     Route::get('view', [App\Http\Controllers\PackageTypeController::class, 'index']);
     Route::post('store',[App\Http\Controllers\PackageTypeController::class, 'store']);
 
@@ -58,7 +58,7 @@ Route::group(['prefix' => 'efris/package'], function () {
 
 
 //Route for Companies Types
-Route::group(['prefix' => 'efris/company-types'], function () {
+Route::group(['prefix' => 'company-types'], function () {
     Route::get('view', [App\Http\Controllers\Company_tpyesController::class, 'index']);
     Route::get('create', [App\Http\Controllers\Company_tpyesController::class, 'create']);
     Route::post('store',[App\Http\Controllers\Company_tpyesController::class, 'store']);
