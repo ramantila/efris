@@ -48,8 +48,10 @@ Route::group(['prefix' => 'efris/package'], function () {
 
 //Route for Companies
     Route::group(['prefix' => 'companies'], function () {
+
     Route::get('view', [App\Http\Controllers\CompanyController::class, 'index']);
-    Route::get('create', [App\Http\Controllers\CompanyController::class, 'create']);
+    Route::get('show', [App\Http\Controllers\CompanyController::class, 'index2']);
+    Route::get('create', [App\Http\Controllers\CompanyController::class, 'create2']);
     Route::post('store',[App\Http\Controllers\CompanyController::class, 'store']);
     Route::get('edit',[App\Http\Controllers\CompanyController::class, 'edit']);
     Route::post('update',[App\Http\Controllers\CompanyController::class, 'update']);
@@ -79,6 +81,7 @@ Route::group(['prefix' => 'efris/branches'], function () {
 
 //Route for catalog
 Route::group(['prefix' => 'efris/product-catalogue'], function () {
+
     Route::get('view', [App\Http\Controllers\Product_catalogueController::class, 'index']);
     Route::get('create', [App\Http\Controllers\Product_catalogueController::class, 'create']);
     Route::post('store',[App\Http\Controllers\Product_catalogueController::class, 'store']);

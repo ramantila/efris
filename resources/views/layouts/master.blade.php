@@ -2,7 +2,7 @@
 <html lang="en">
 
 <head>
-    <title>Users | Radmin - Laravel Admin Starter</title>
+    <title>WEB | EFRIS</title>
     <!-- initiate head with meta tags, css and script -->
     <meta charset="utf-8">
     <meta http-equiv="x-ua-compatible" content="ie=edge">
@@ -161,7 +161,7 @@
                 <div class="sidebar-header">
                     <a class="header-brand" href="https://radmin.themicly.com/dashboard">
                         <div class="logo-img">
-                            <h6>WAKALA SOLUTION</h6>
+                            <h6>WEB-EFRIS</h6>
                         </div>
                     </a>
                     <div class="sidebar-action"><i class="ik ik-arrow-left-circle"></i></div>
@@ -349,12 +349,12 @@
             <footer class="footer">
                 <div class="w-100 clearfix">
                     <span class="text-center text-sm-left d-md-inline-block">
-                        v3.5.0 Copyright © 2023 - Bytech
+                        v3.5.0 Copyright © 2023 - WebCorp
                         <i class="fa fa-heart text-danger"></i>
                     </span>
                     <span class="float-none float-sm-right mt-1 mt-sm-0 text-center">
                         Developed by
-                        <a class="text-dark" target="_blank" href="https://themicly.com">Bytech</a>
+                        <a class="text-dark" target="_blank" href="">WebCorp</a>
                         </a>
                         with <i class="fa fa-heart text-danger"></i>
                     </span>

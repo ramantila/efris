@@ -64,40 +64,41 @@
                         <table id="data_table" class="table">
                             <thead>
                                 <tr>
-                                    <th style="width: 20px;">#</th>
-                                    <th style="width: 60px;">Package Type Name</th>
-
+                                    <th style="width: 63px;">#</th>
+                                    {{-- <th style="width: 63px;">ID</th> --}}
+                                    <th style="width: 63px;">Name</th>
                                     <th style="width: 63px;">Action</th>
                                 </tr>
                                 </thead>
                                 <tbody>
-                                @foreach($packages as $index => $key)
+                                @foreach($companytype as $index => $comtype)
                                     <tr>
-                                        <td>{{ $index + 1 }}</td>
-                                        <td>{{ $key['name'] }}</td>
+                                        <td>{{ $index+1 }}</td>
+                                        {{-- <td>{{ $comtype['id'] }}</td> --}}
+                                        <td>{{ $comtype['name'] }}</td>
+                                        {{-- <td>{{ $comtype['companyTypeName'] }}</td> --}}
 
                                         <td>
                                             <a class="add-btn"
-                                                   href=""><i
-                                                            class="fas fa-eye"></i> <span
-                                                            class="remove-mobile"><span></span></span></a>
+                                               href="https://product.geniusocean.com/kingcommerce/kingcommerce/admin/products/types"><i
+                                                        class="fas fa-eye"></i> <span
+                                                        class="remove-mobile"><span></span></span></a>
 
-                                                <a class="add-btn"
-                                                   href=""><i
-                                                            class="fas fa-pencil-alt"></i> <span
-                                                            class="remove-mobile"><span></span></span></a>
+                                            <a class="add-btn"
+                                               href="https://product.geniusocean.com/kingcommerce/kingcommerce/admin/products/types"><i
+                                                        class="fas fa-pencil-alt"></i> <span
+                                                        class="remove-mobile"><span></span></span></a>
 
-                                                <a class="add-btn"
-                                                   href="https://product.geniusocean.com/kingcommerce/kingcommerce/admin/products/types"><i
-                                                            class="fas fa-trash"></i> <span
-                                                            class="remove-mobile"><span></span></span></a>
-
+                                            <a class="add-btn"
+                                               href="https://product.geniusocean.com/kingcommerce/kingcommerce/admin/products/types"><i
+                                                        class="fas fa-trash"></i> <span
+                                                        class="remove-mobile"><span></span></span></a>
                                         </td>
-                                </tr>
+                                    </tr>
                                 @endforeach
-                            </tbody>
+                                </tbody>
+                            </table>
 
-                        </table>
 
                     </div>
                 </div>
@@ -110,18 +111,18 @@
     <div class="modal-dialog modal-dialog-centered" role="document">
         <div class="modal-content">
             <div class="modal-header">
-                <h5 class="modal-title" id="exampleModalCenterLabel">Package Type</h5>
+                <h5 class="modal-title" id="exampleModalCenterLabel">Create Debt</h5>
                 <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span
                         aria-hidden="true">&times;</span></button>
             </div>
-            <form action="{{ url('packages-type/store') }}" method="POST">
+            <form action="{{ url('company-types/store') }}" method="POST">
                 @csrf
                 <div class="modal-body">
 
                     <div class="form-group">
-                        <label for="title">Full Name<span class="text-red">*</span></label>
-                        <input id="title" type="text" class="form-control" placeholder="Package Name"
-                        name="package"
+                        <label for="title">Comapany Type Name<span class="text-red">*</span></label>
+                        <input id="title" type="text" class="form-control" placeholder="Company Type Name"
+                        name="name"
                         required="">
                         <div class="help-block with-errors"></div>
                     </div>

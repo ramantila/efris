@@ -3,6 +3,7 @@
     Company
 @endsection
 @section('content')
+
     <div class="page-header">
         <div class="row align-items-end">
             <div class="col-lg-8">
@@ -85,9 +86,35 @@
                                     <th style="width: 63px;">Action</th>
                                 </tr>
                                 </thead>
-                            <tbody>
+                                <tbody>
+                                @foreach($company as $index => $com)
+                                    <tr>
+                                        <td>{{ $index+1 }}</td>
+                                        <td>{{ $com['companyName'] }}</td>
+                                        <td>{{ $com['companyType'] }}</td>
+                                        <td>{{ $com['companyTypeName'] }}</td>
+                                        <td>{{ $com['tinNumber'] }}</td>
+                                        <td>{{ $com['vrn'] }}</td>
+                                        <td>{{ $com['taxOffice'] }}</td>
+                                        <td>{{ $com['contactPersonName'] }}</td>
+                                        <td>{{ $com['contactPersonEmail'] }}</td>
+                                        <td>{{ $com['contactPersonPhone'] }}</td>
+                                        <td>{{ $com['smsReceipts'] }}</td>
+                                        <td>{{ $com['createdBy'] }}</td>
+                                        <td>{{ $com['createdByName'] }}</td>
+                                        <td>{{ $com['totalReceiptSent'] }}</td>
+                                        {{-- <td>{{ $com['status'] }}</td> --}}
+                                        {{-- <td>{{ $com['verificationStatus'] }}</td> --}}
+                                        {{-- <td>{{ $com['verificationStatusDescription'] }}</td> --}}
+                                        {{-- <td>{{ $com['verificationStage'] }}</td> --}}
+                                        {{-- <td>{{ $com['createdAt'] }}</td> --}}
 
+                                        <td>
+                                        </td>
+                                </tr>
+                                @endforeach
                             </tbody>
+
                         </table>
                     </div>
                 </div>
@@ -95,3 +122,4 @@
         </div>
     </div>
 @endsection
+

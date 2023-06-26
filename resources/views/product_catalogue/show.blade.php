@@ -3,6 +3,7 @@
     Company
 @endsection
 @section('content')
+
     <div class="page-header">
         <div class="row align-items-end">
             <div class="col-lg-8">
@@ -64,30 +65,37 @@
                             <thead>
                                 <tr>
                                     <th style="width: 63px;">#</th>
-                                    <th style="width: 63px;">Company Name</th>
-                                    <th style="width: 63px;">Company Type</th>
-                                    <th style="width: 63px;">Company Type Name</th>
-                                    <th style="width: 63px;">Tin</th>
-                                    <th style="width: 63px;">Vrn</th>
-                                    <th style="width: 63px;">Tax office</th>
-                                    <th style="width: 63px;">Contact Person</th>
-                                    <th style="width: 63px;">Contact Person Email</th>
-                                    <th style="width: 63px;">Contact Phone</th>
-                                    <th style="width: 63px;">Sms Receipt</th>
-                                    <th style="width: 63px;">Created By</th>
-                                    <th style="width: 63px;">Created By Name</th>
-                                    <th style="width: 63px;">Total Receipt sent</th>
-                                    {{-- <th style="width: 63px;">Verification status</th> --}}
-                                    {{-- <th style="width: 63px;">Action</th> --}}
-                                    {{-- <th style="width: 63px;">Ver description</th> --}}
-                                    {{-- <th style="width: 63px;">ver stage</th> --}}
-                                    {{-- <th style="width: 63px;">Created</th> --}}
+                                    <th style="width: 63px;">Product Name</th>
+                                    <th style="width: 63px;">Product Code</th>
+                                    <th style="width: 63px;">Product Unit</th>
+                                    <th style="width: 63px;">product Commodity Category</th>
+                                    <th style="width: 63px;">product Commodity CategoryId</th>
+                                    <th style="width: 63px;">Product TaxCode</th>
+
                                     <th style="width: 63px;">Action</th>
+
                                 </tr>
                                 </thead>
-                            <tbody>
+                                <tbody>
 
+
+                                @foreach($productcatalogue as $index => $key)
+
+                                    <tr>
+                                        <td>{{ $index ++ }}</td>
+                                        <td>{{ $key['productName'] }}</td>
+                                        {{-- <td>{{ $key['productCode'] }}</td>
+                                        <td>{{ $key['productUnit'] }}</td>
+                                        <td>{{ $key['productCommodityCategory'] }}</td>
+                                        <td>{{ $key['productCommodityCategoryId'] }}</td>
+                                        <td>{{ $key['productTaxCode'] }}</td> --}}
+
+
+                                     <td></td>
+                                </tr>
+                                @endforeach
                             </tbody>
+
                         </table>
                     </div>
                 </div>
@@ -95,3 +103,4 @@
         </div>
     </div>
 @endsection
+

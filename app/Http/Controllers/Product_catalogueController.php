@@ -2,21 +2,20 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Session;
 
-class PackageTypeController extends Controller
+class Product_catalogueController extends Controller
 {
     public function index(){
-
-
         $BASE_URL = 'https://api.webefris.co.ug/api/v1/';
 
         $HEADERS = array(
             'Authorization: Bearer '.Session::get('token')
         );
 
-        $URL = $BASE_URL.'package-types';
+        $URL = $BASE_URL.'product-catalogue';
         $CURL =  curl_init();
         curl_setopt($CURL, CURLOPT_URL, $URL);
         curl_setopt($CURL, CURLOPT_HTTPHEADER, $HEADERS);
@@ -33,14 +32,13 @@ class PackageTypeController extends Controller
 
         }
 
-          $packages =  json_decode($result,true);
+        $productcatalogue =  json_decode($result,true);
 
-        // return view('packages_type.index',compact('packages'));
 
-        return view('efris.package_type.index', compact('packages'));
-
+        return view('product_catalogue.show',compact('productcatalogue'));
     }
-    public function index2(){
+
+    public function create(){
 
         $BASE_URL = 'https://api.webefris.co.ug/api/v1/';
 
@@ -48,7 +46,7 @@ class PackageTypeController extends Controller
             'Authorization: Bearer '.Session::get('token')
         );
 
-        $URL = $BASE_URL.'package-types';
+        $URL = $BASE_URL.'companies';
         $CURL =  curl_init();
         curl_setopt($CURL, CURLOPT_URL, $URL);
         curl_setopt($CURL, CURLOPT_HTTPHEADER, $HEADERS);
@@ -65,10 +63,12 @@ class PackageTypeController extends Controller
 
         }
 
-          $packages =  json_decode($result,true);
+        $company =  json_decode($result,true);
 
-        return view('packages_type.index',compact('packages'));
+
+        return view('product_catalogue.addcatelogue',compact('company'));
     }
+
 
     public function store(Request $request){
         $BASE_URL = 'https://api.webefris.co.ug/api/v1/';
@@ -80,12 +80,17 @@ class PackageTypeController extends Controller
         );
 
         $DATA = [
-            "name" => $request->package,
+            "productName" => $request->productName,
+            "productCode" => $request->productCode,
+            "productUnit" => $request->productUnit,
+            "productCommodityCategory" => $request->productCommodityCategory,
+            "productCommodityCategoryId" => $request->productCommodityCategoryId,
+            "productTaxCode" => $request->productTaxCode,
         ];
 
         $jsonData = json_encode($DATA);
 
-        $CURL = curl_init($BASE_URL.'package-types');
+        $CURL = curl_init($BASE_URL.'product-catalogue');
         curl_setopt($CURL, CURLOPT_POST, true);
         curl_setopt($CURL, CURLOPT_HTTPHEADER, $HEADERS);
         curl_setopt($CURL, CURLOPT_SSL_VERIFYPEER, 0);
@@ -105,9 +110,8 @@ class PackageTypeController extends Controller
         }
 
        $response =  json_decode($result);
-
-       return redirect('packages-type/view');
+return $DATA;
+       return redirect('efris/product-catalogue/show');
     }
-
 
 }

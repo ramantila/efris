@@ -1,6 +1,6 @@
 @extends('layouts.master')
 @section('title')
-    Package Type
+   Packages
 @endsection
 @section('content')
     <div class="page-header">
@@ -9,8 +9,8 @@
                 <div class="page-header-title">
                     <i class="ik ik-users bg-blue"></i>
                     <div class="d-inline">
-                        <h5>Package Type</h5>
-                        <span>List of package type</span>
+                        <h5>Packages</h5>
+                        <span>List of Packages</span>
                     </div>
                 </div>
             </div>
@@ -21,7 +21,7 @@
                             <a href="https://radmin.themicly.com/dashboard"><i class="ik ik-home"></i></a>
                         </li>
                         <li class="breadcrumb-item">
-                            <a href="#">Package Type</a>
+                            <a href="#">Company</a>
                         </li>
                     </ol>
                 </nav>
@@ -36,8 +36,7 @@
             <div class="card">
                 <div class="card-header row">
                     <div class="col col-sm-2">
-                        <button type="button" class="btn btn-sm btn-primary btn-rounded" data-toggle="modal"
-                        data-target="#exampleModalCenter">Add Package Type</button>
+                            <a href="{{ url('efris/packages/create') }}" class="btn btn-sm btn-primary btn-rounded">Add Company </a>
                     </div>
                     <div class="col col-sm-1">
                         <div class="card-options d-inline-block">
@@ -63,21 +62,32 @@
                     <div class="dt-responsive">
                         <table id="data_table" class="table">
                             <thead>
-                                <tr>
-                                    <th style="width: 20px;">#</th>
-                                    <th style="width: 60px;">Package Type Name</th>
-
-                                    <th style="width: 63px;">Action</th>
-                                </tr>
-                                </thead>
-                                <tbody>
-                                @foreach($packages as $index => $key)
+                                <thead>
                                     <tr>
-                                        <td>{{ $index + 1 }}</td>
-                                        <td>{{ $key['name'] }}</td>
-
-                                        <td>
-                                            <a class="add-btn"
+                                        <th style="width: 20px;">#</th>
+                                        <th style="width: 60px;">Package Name</th>
+                                        <th style="width: 60px;">Type</th>
+                                        <th style="width: 63px;">Price</th>
+                                        <th style="width: 63px;">Renewal Price</th>
+                                        <th style="width: 60px;">No of Users</th>
+                                        <th style="width: 60px;">No of Branches</th>
+                                        <th style="width: 63px;">Created By</th>
+                                        <th style="width: 63px;">Action</th>
+                                    </tr>
+                                    </thead>
+                                    <tbody>
+                                        @foreach($packages as $index => $key)
+                                        <tr>
+                                            <td>{{ $index + 1 }}</td>
+                                            <td>{{ $key['name'] }}</td>
+                                            <td>{{ $key['packageTypeName'] }}</td>
+                                            <td>{{ $key['price'] }}</td>
+                                            <td>{{ $key['renewalPrice'] }}</td>
+                                            <td>{{ $key['numberOfUsers'] }}</td>
+                                            <td>{{ $key['numberOfBranches'] }}</td>
+                                            <td>{{ $key['createdByName'] }}</td>
+                                            <td>
+                                                <a class="add-btn"
                                                    href=""><i
                                                             class="fas fa-eye"></i> <span
                                                             class="remove-mobile"><span></span></span></a>
@@ -91,11 +101,11 @@
                                                    href="https://product.geniusocean.com/kingcommerce/kingcommerce/admin/products/types"><i
                                                             class="fas fa-trash"></i> <span
                                                             class="remove-mobile"><span></span></span></a>
+                                            </td>
+                                        </tr>
+                                        @endforeach
+                                    </tbody>
 
-                                        </td>
-                                </tr>
-                                @endforeach
-                            </tbody>
 
                         </table>
 
@@ -104,35 +114,4 @@
             </div>
         </div>
     </div>
-
-    <div class="modal fade" id="exampleModalCenter" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterLabel"
-    aria-hidden="true">
-    <div class="modal-dialog modal-dialog-centered" role="document">
-        <div class="modal-content">
-            <div class="modal-header">
-                <h5 class="modal-title" id="exampleModalCenterLabel">Package Type</h5>
-                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span
-                        aria-hidden="true">&times;</span></button>
-            </div>
-            <form action="{{ url('packages-type/store') }}" method="POST">
-                @csrf
-                <div class="modal-body">
-
-                    <div class="form-group">
-                        <label for="title">Full Name<span class="text-red">*</span></label>
-                        <input id="title" type="text" class="form-control" placeholder="Package Name"
-                        name="package"
-                        required="">
-                        <div class="help-block with-errors"></div>
-                    </div>
-
-                </div>
-                <div class="modal-footer">
-                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                    <button type="submit" class="btn btn-primary">Save</button>
-                </div>
-            </form>
-        </div>
-    </div>
-</div>
 @endsection

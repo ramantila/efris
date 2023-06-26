@@ -2,40 +2,50 @@
 
 namespace App\Http\Controllers;
 
-
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
-use Illuminate\Support\Carbon;
 use Illuminate\Support\Facades\Session;
 
-class CompanyController extends Controller
+class BranchController extends Controller
 {
     public function index(){
+        $BASE_URL = 'https://api.webefris.co.ug/api/v1/';
 
-        return view('efris.company.index');
+        $HEADERS = array(
+            'Authorization: Bearer '.Session::get('token')
+        );
 
+        $URL = $BASE_URL.'branches';
+        $CURL =  curl_init();
+        curl_setopt($CURL, CURLOPT_URL, $URL);
+        curl_setopt($CURL, CURLOPT_HTTPHEADER, $HEADERS);
+        curl_setopt($CURL, CURLOPT_RETURNTRANSFER, true);
+
+        try {
+            $result = curl_exec($CURL);
+            if (curl_errno($CURL)){
+                throw new \Exception(curl_error($CURL));
+            }
+            curl_close($CURL);
+        }
+        catch (\Exception $e){
+
+        }
+
+      $branch =  json_decode($result,true);
+
+
+        return view('branch.show',compact('branch'));
     }
 
     public function create(){
-
-        return view('efris.company.create');
-
-    }
-
-
-
-
-
-
-    public function index2()
-    {
         $BASE_URL = 'https://api.webefris.co.ug/api/v1/';
 
         $HEADERS = array(
-            'Authorization: Bearer ' . Session::get('token')
+            'Authorization: Bearer '.Session::get('token')
         );
 
-        $URL = $BASE_URL . 'companies';
+        $URL = $BASE_URL.'companies';
         $CURL =  curl_init();
         curl_setopt($CURL, CURLOPT_URL, $URL);
         curl_setopt($CURL, CURLOPT_HTTPHEADER, $HEADERS);
@@ -43,85 +53,43 @@ class CompanyController extends Controller
 
         try {
             $result = curl_exec($CURL);
-            if (curl_errno($CURL)) {
+            if (curl_errno($CURL)){
                 throw new \Exception(curl_error($CURL));
             }
             curl_close($CURL);
-        } catch (\Exception $e) {
+        }
+        catch (\Exception $e){
+
         }
 
-        $company =  json_decode($result, true);
+        $company =  json_decode($result,true);
 
 
-        return view('company.show', compact('company'));
+        return view('branch.addbranch',compact('company'));
     }
 
+    public function store(Request $request){
 
-
-    public function create2(Request $request)
-    {
-
-        $BASE_URL = 'https://api.webefris.co.ug/api/v1/';
-
-        $HEADERS = array(
-            'Authorization: Bearer ' . Session::get('token')
-        );
-
-        $URL = $BASE_URL . 'company-types';
-        $CURL =  curl_init();
-        curl_setopt($CURL, CURLOPT_URL, $URL);
-        curl_setopt($CURL, CURLOPT_HTTPHEADER, $HEADERS);
-        curl_setopt($CURL, CURLOPT_RETURNTRANSFER, true);
-
-        try {
-            $result = curl_exec($CURL);
-            if (curl_errno($CURL)) {
-                throw new \Exception(curl_error($CURL));
-            }
-            curl_close($CURL);
-        } catch (\Exception $e) {
-        }
-
-        $companyTypes =  json_decode($result, true);
-
-        return view('company.addcompany', compact('companyTypes'));
-    }
-
-
-
-    public function store(Request $request)
-    {
         $BASE_URL = 'https://api.webefris.co.ug/api/v1/';
 
         $HEADERS = array(
             'Accept: Application/json',
             'Content-type: Application/json',
-            'Authorization: Bearer ' . Session::get('token')
+            'Authorization: Bearer '.Session::get('token')
         );
 
         $DATA = [
-            "companyName" => $request->companyName,
-            "companyType" => $request->companyType,
-            "companyTypeName" => $request->companyTypeName,
-            "tinNumber" => $request->tinNumber,
-            "vrn" => $request->vrn,
-            "taxOffice" => $request->taxOffice,
-            "contactPersonName" => $request->contactPersonName,
-            "contactPersonEmail" => $request->contactPersonEmail,
-            "contactPersonPhone" => $request->contactPersonPhone,
-            // "totalReceiptSent" => $request->totalReceiptSent,
-            // "status" => $request->status,
-            // "verificationStatus" => $request->verificationStatus,
-            // "verificationStatusDescription" => $request->verificationStatusDescription,
-            // "verificationStage" => $request->verificationStage,
-            // "aesKeyExpiration" => $request->aesKeyExpiration,
-            "createdAt" => Carbon::now(),
-
+            "name" => $request->name,
+            "branchCode" => $request->branchCode,
+            "isMainBranch" => $request->isMainBranch,
+            "companyId" => $request->companyId,
+            // "companyName" => $request->noUsers,
+            // "numberOfBranches" => $request->noBranches,
         ];
 
         $jsonData = json_encode($DATA);
 
-        $CURL = curl_init($BASE_URL . 'companies');
+        $CURL = curl_init($BASE_URL.'branches');
         curl_setopt($CURL, CURLOPT_POST, true);
         curl_setopt($CURL, CURLOPT_HTTPHEADER, $HEADERS);
         curl_setopt($CURL, CURLOPT_SSL_VERIFYPEER, 0);
@@ -131,18 +99,22 @@ class CompanyController extends Controller
 
         try {
             $result = curl_exec($CURL);
-            if (curl_errno($CURL)) {
+            if (curl_errno($CURL)){
                 throw new \Exception(curl_error($CURL));
             }
             curl_close($CURL);
-        } catch (\Exception $e) {
+        }
+        catch (\Exception $e){
+
         }
 
         $response =  json_decode($result);
 
-        return $DATA;
+         return $DATA;
 
         return redirect()->back();
+
+        // return redirect('efris/packages/view');
     }
 
     public function edit(Request $request)
@@ -154,7 +126,7 @@ class CompanyController extends Controller
             'Authorization: Bearer ' . Session::get('token')
         );
 
-        $URL = $BASE_URL . 'companies';
+        $URL = $BASE_URL . 'branches';
         $CURL =  curl_init();
         curl_setopt($CURL, CURLOPT_URL, $URL);
         curl_setopt($CURL, CURLOPT_HTTPHEADER, $HEADERS);
@@ -168,21 +140,25 @@ class CompanyController extends Controller
             curl_close($CURL);
         } catch (\Exception $e) {
         }
+        // $id = $request->input('id');
+        $branchedit =  json_decode($result, true);
 
-        $companyedit =  json_decode($result, true);
-
-        return view('company.edit', compact('companyedit'));
+        return view('branch.edit', compact('branchedit'));
     }
 
 
 
-    public function update()
+    public function update(Request $request)
     {
 
-        $url = 'https://api.webefris.co.ug/api/v1/companies'; // Replace with your API endpoint URL
-        $data = ['key1' => 'value1',
+        $url = 'https://api.webefris.co.ug/api/v1/branches'; // Replace with your API endpoint URL
+        $data = [
 
-        'key2' => 'value2']; // Replace with the data you want to update
+        'id'=>$request->id,
+        "name" => $request->name,
+        "branchCode" => $request->branchCode,
+        "isMainBranch" => $request->isMainBranch,
+        "companyId" => $request->companyId,]; // Replace with the data you want to update
 
         $ch = curl_init($url);
         curl_setopt($ch, CURLOPT_CUSTOMREQUEST, 'PUT'); // Use PUT method for update
@@ -201,11 +177,9 @@ class CompanyController extends Controller
             $responseData = json_decode($response, true);
             // ...
 
-            return redirect('');
+            return redirect('efris/branches/show');
         }
 
     }
 
 }
-
-
