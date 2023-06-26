@@ -56,15 +56,15 @@
                                     </div>
 
                                     <div class="col-md-6">
+
                                         <div class="form-group">
                                             <label for="title2">Company Type<span class="text-red">*</span></label>
-                                            <select id="cat2" name="companyType" required="">
+                                            <select class="form-control select2" name="type" required="">
                                                 <option value="">Select Package Type</option>
                                                 @foreach($companyTypes as  $key)
                                                     <option value="{{ $key['id'] }}">{{ $key['name'] }}</option>
                                                 @endforeach
                                             </select>
-                                            <div class="help-block with-errors"></div>
                                         </div>
                                     </div>
 

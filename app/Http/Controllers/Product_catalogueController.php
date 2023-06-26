@@ -32,7 +32,7 @@ class Product_catalogueController extends Controller
 
         }
 
-        $productcatalogue =  json_decode($result,true);
+       return $productcatalogue =  json_decode($result,true);
 
 
         return view('product_catalogue.show',compact('productcatalogue'));
