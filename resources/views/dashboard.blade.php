@@ -12,7 +12,7 @@
                         <div class="row align-items-center">
                             <div class="col-8">
                                 <h4 class="mb-0">2,563</h4>
-                                <p class="mb-0">Capital</p>
+                                <p class="mb-0">Companies</p>
                             </div>
                             <div class="col-4 text-right">
                                 <i class="fas fa-cube f-30"></i>
@@ -28,7 +28,7 @@
                         <div class="row align-items-center">
                             <div class="col-8">
                                 <h4 class="mb-0">78</h4>
-                                <p class="mb-0">Debts</p>
+                                <p class="mb-0">Branches</p>
                             </div>
                             <div class="col-4 text-right">
                                 <i class="ik ik-shopping-cart f-30"></i>

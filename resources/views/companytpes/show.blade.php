@@ -1,6 +1,6 @@
 @extends('layouts.master')
 @section('title')
-    Package Type
+    Company Type
 @endsection
 @section('content')
     <div class="page-header">
@@ -9,8 +9,8 @@
                 <div class="page-header-title">
                     <i class="ik ik-users bg-blue"></i>
                     <div class="d-inline">
-                        <h5>Package Type</h5>
-                        <span>List of package type</span>
+                        <h5>Company Type</h5>
+                        <span>List of Company type</span>
                     </div>
                 </div>
             </div>
@@ -21,7 +21,7 @@
                             <a href="https://radmin.themicly.com/dashboard"><i class="ik ik-home"></i></a>
                         </li>
                         <li class="breadcrumb-item">
-                            <a href="#">Package Type</a>
+                            <a href="#">Company Type</a>
                         </li>
                     </ol>
                 </nav>
@@ -37,7 +37,7 @@
                 <div class="card-header row">
                     <div class="col col-sm-2">
                         <button type="button" class="btn btn-sm btn-primary btn-rounded" data-toggle="modal"
-                        data-target="#exampleModalCenter">Add Package Type</button>
+                        data-target="#exampleModalCenter">Add Company Type</button>
                     </div>
                     <div class="col col-sm-1">
                         <div class="card-options d-inline-block">

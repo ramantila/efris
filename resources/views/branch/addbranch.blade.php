@@ -59,9 +59,10 @@
                                     <div class="col-md-6">
                                         <div class="form-group">
                                             <label for="title">Is Main Branch<span class="text-red">*</span></label>
-                                            <select id="cat" name="isMainBranch" required="">
-                                            <option value="">True</option>
-                                            <option value="">False</option>
+                                            <select class="form-control select2" name="isMainBranch" required="">
+                                            {{-- <select id="cat" name="isMainBranch" required=""> --}}
+                                            <option value="True">True</option>
+                                            <option value="False">False</option>
 
                                         </select>
                                             <div class="help-block with-errors"></div>
@@ -75,12 +76,22 @@
                                         <div class="form-group">
 
                                             <label for="title">Select The company<span class="text-red">*</span></label>
-                                            <select id="cat2" class= "form-select"  name="isMainBranch" required="">
+                                            <label for="title2">Company Type<span class="text-red">*</span></label>
+                                            <select class="form-control select2" name="type" required="">
+                                                <option value="">Select Package Type</option>
+                                                @foreach($company as $key)
+                                                    <option value="{{ $key['id'] }}">{{ $key['companyName'] }}</option>
+                                                @endforeach
+                                            </select>
+
+
+
+                                            {{-- <select id="cat2" class= "form-select"  name="isMainBranch" required="">
                                                 <option value="">Select The company</option>
                                                 @foreach ($company as $key)
                                                     <option value="{{ $key['id'] }}">{{ $key['companyName'] }}</option>
                                                 @endforeach
-                                            </select>
+                                            </select> --}}
                                             <div class="help-block with-errors"></div>
                                         </div>
                                     </div>
