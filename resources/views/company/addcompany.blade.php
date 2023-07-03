@@ -49,7 +49,7 @@
                                     <div class="col-md-6 mr-">
                                         <div class="form-group">
                                             <label for="title1">Company Name<span class="text-red">*</span></label>
-                                            <input id="title1" type="name" class="form-control" name="companyName"
+                                            <input id="title1" type="text" class="form-control" name="companyName"
                                                  placeholder="Company Name" required="">
                                             <div class="help-block with-errors"></div>
                                         </div>
@@ -74,7 +74,7 @@
                                     <div class="col-md-6 mr-">
                                         <div class="form-group">
                                             <label for="title3">Company Type Name<span class="text-red">*</span></label>
-                                            <input id="title3" type="number" class="form-control" placeholder="Company Type Name"
+                                            <input id="title3" type="text" class="form-control" placeholder="Company Type Name"
                                             name="companyTypeName"required="">
                                             <div class="help-block with-errors"></div>
                                         </div>
@@ -94,7 +94,7 @@
                                         <div class="col-md-6 mr-">
                                             <div class="form-group">
                                                 <label for="title5">Vrn<span class="text-red">*</span></label>
-                                                <input id="title5" type="number" class="form-control"  placeholder="VRN"
+                                                <input id="title5" type="text" class="form-control"  placeholder="VRN"
                                                 name="vrn"required="">
                                                 <div class="help-block with-errors"></div>
                                             </div>
@@ -103,7 +103,7 @@
                                         <div class="col-md-6">
                                             <div class="form-group">
                                                 <label for="title6">Tax Office<span class="text-red">*</span></label>
-                                                <input id="title6" type="number" class="form-control"  placeholder="taxOffice "
+                                                <input id="title6" type="text" class="form-control"  placeholder="taxOffice "
                                                 name="taxOffice"required="">
                                                 <div class="help-block with-errors"></div>
                                             </div>
@@ -114,7 +114,7 @@
                                             <div class="col-md-6 mr-">
                                                 <div class="form-group">
                                                     <label for="title7">Contact Person Name<span class="text-red">*</span></label>
-                                                    <input id="title7" type="number" class="form-control"   placeholder="Contact Person Name"
+                                                    <input id="title7" type="text" class="form-control"   placeholder="Contact Person Name"
                                                     name="contactPersonName" required="">
                                                     <div class="help-block with-errors"></div>
                                                 </div>
@@ -134,7 +134,7 @@
                                                 <div class="col-md-6 mr-">
                                                     <div class="form-group">
                                                         <label for="title9">Contact Person Email<span class="text-red">*</span></label>
-                                                        <input id="title9" type="number" class="form-control"    placeholder="Contact Person Email"
+                                                        <input id="title9" type="text" class="form-control"    placeholder="Contact Person Email"
                                                         name="contactPersonEmail" required="">
                                                         <div class="help-block with-errors"></div>
                                                     </div>
@@ -143,7 +143,7 @@
                                                 <div class="col-md-6">
                                                     <div class="form-group">
                                                         <label for="title0">Contact person No.<span class="text-red">*</span></label>
-                                                        <input id="title0" type="number" class="form-control" laceholder="Contact Person Phone"
+                                                        <input id="title0" type="text" class="form-control" laceholder="Contact Person Phone"
                                                         name="contactPersonPhone" required="">
                                                         <div class="help-block with-errors"></div>
                                                     </div>

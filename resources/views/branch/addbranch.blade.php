@@ -22,7 +22,7 @@
                             <a href="https://radmin.themicly.com/dashboard"><i class="ik ik-home"></i></a>
                         </li>
                         <li class="breadcrumb-item">
-                            <a href="#">Sale</a>
+                            <a href="#">Branch</a>
                         </li>
                     </ol>
                 </nav>
@@ -50,7 +50,7 @@
                                     <div class="col-md-6 mr-">
                                         <div class="form-group">
                                             <label for="title">Branch Name<span class="text-red">*</span></label>
-                                            <input id="title" type="number" class="form-control" placeholder="Branch Name"
+                                            <input id="title" type="text" class="form-control" placeholder="Branch Name"
                                             name="name" required="">
                                             <div class="help-block with-errors"></div>
                                         </div>
@@ -99,7 +99,7 @@
                                     <div class="col-md-6">
                                         <div class="form-group">
                                             <label for="title">Branch Code<span class="text-red">*</span></label>
-                                            <input id="title" type="number" class="form-control" placeholder="Branch Code"
+                                            <input id="title" type="text" class="form-control" placeholder="Branch Code"
                                             name="companyId" required="">
                                             <div class="help-block with-errors"></div>
                                         </div>

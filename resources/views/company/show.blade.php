@@ -110,6 +110,21 @@
                                         {{-- <td>{{ $com['createdAt'] }}</td> --}}
 
                                         <td>
+                                            <a class="add-btn"
+                                            href=""><i
+                                                     class="fas fa-eye"></i> <span
+                                                     class="remove-mobile"><span></span></span></a>
+
+                                         <a class="add-btn"
+                                            href=""><i
+                                                     class="fas fa-pencil-alt"></i> <span
+                                                     class="remove-mobile"><span></span></span></a>
+
+                                         <a class="add-btn"
+                                            href="https://product.geniusocean.com/kingcommerce/kingcommerce/admin/products/types"><i
+                                                     class="fas fa-trash"></i> <span
+                                                     class="remove-mobile"><span></span></span></a>
+
                                         </td>
                                 </tr>
                                 @endforeach

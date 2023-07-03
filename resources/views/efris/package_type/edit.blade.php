@@ -1,6 +1,6 @@
 @extends('layouts.master')
 @section('title')
-    Branch
+    Company
 @endsection
 @section('content')
 

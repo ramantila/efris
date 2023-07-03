@@ -50,7 +50,7 @@
                                     <div class="col-md-6 mr-">
                                         <div class="form-group">
                                             <label for="title">Package Name<span class="text-red">*</span></label>
-                                            <input id="title" type="number" class="form-control" placeholder="Branch Name"
+                                            <input id="title" type="text" class="form-control" placeholder="Name"
                                             name="name" required="">
                                             <div class="help-block with-errors"></div>
                                         </div>
@@ -70,24 +70,23 @@
                                     </div>
 
                                 </div>
+                                
 
                                 <div class="row">
                                     <div class="col-md-6 mr-">
                                         <div class="form-group">
-                                            <label for="title">Price<span class="text-red">*</span></label>
-                                            <input type="text" class="input-field" placeholder="Price"
-                                            name="price"
-                                            required="">
+                                            <label for="title"> Price <span class="text-red">*</span></label>
+                                            <input id="title" type="text" class="form-control" placeholder="Price"
+                                            name="price" required="">
                                             <div class="help-block with-errors"></div>
                                         </div>
                                     </div>
 
-                                    <div class="col-md-6">
-                                        <div class="form-group">
+                                    <div class="col-md-6 mr-">
+                                         <div class="form-group">
                                             <label for="title">Renewal Price<span class="text-red">*</span></label>
-                                            <input type="text" class="input-field1" placeholder="Renewal Price"
-                                                   name="renewalPrice"
-                                                   required="">
+                                            <input id="title" type="text" class="form-control" placeholder="Renewal Price"
+                                            name="renewalPrice" required="">
                                             <div class="help-block with-errors"></div>
                                         </div>
                                     </div>
@@ -96,8 +95,8 @@
                                 <div class="row">
                                     <div class="col-md-6 mr-">
                                         <div class="form-group">
-                                            <label for="title">Number of Users<span class="text-red">*</span></label>
-                                            <input type="text" class="input-field2" placeholder="Number of Users"
+                                            <label for="title">Number of users<span class="text-red">*</span></label>
+                                            <input id="title" type="text" class="form-control" placeholder="Number of users"
                                             name="noUsers" required="">
                                             <div class="help-block with-errors"></div>
                                         </div>
@@ -106,7 +105,7 @@
                                     <div class="col-md-6">
                                         <div class="form-group">
                                             <label for="title">Number of Branches<span class="text-red">*</span></label>
-                                            <input type="text" class="input-field" placeholder="Number of Branches "
+                                            <input id="title" type="number" class="form-control" placeholder="Number of Branches"
                                             name="noBranches" required="">
                                             <div class="help-block with-errors"></div>
                                         </div>
