@@ -1,6 +1,6 @@
 @extends('layouts.master')
 @section('title')
-  Branch
+   Users
 @endsection
 @section('content')
     <div class="page-header">
@@ -9,8 +9,8 @@
                 <div class="page-header-title">
                     <i class="ik ik-users bg-blue"></i>
                     <div class="d-inline">
-                        <h5>Branch</h5>
-                        <span>List of Branch</span>
+                        <h5>Users</h5>
+                        <span>List of Users</span>
                     </div>
                 </div>
             </div>
@@ -21,7 +21,7 @@
                             <a href="https://radmin.themicly.com/dashboard"><i class="ik ik-home"></i></a>
                         </li>
                         <li class="breadcrumb-item">
-                            <a href="#">Branch</a>
+                            <a href="#">Users</a>
                         </li>
                     </ol>
                 </nav>
@@ -36,7 +36,7 @@
             <div class="card">
                 <div class="card-header row">
                     <div class="col col-sm-2">
-                            <a href="{{ url('efris/branches/create') }}" class="btn btn-sm btn-primary btn-rounded">Add Branch </a>
+                            <a href="{{ url('efris/package/create') }}" class="btn btn-sm btn-primary btn-rounded">Add Company </a>
                     </div>
                     <div class="col col-sm-1">
                         <div class="card-options d-inline-block">
@@ -64,38 +64,26 @@
                             <thead>
                                 <thead>
                                     <tr>
-                                        <th style="width: 63px;">#</th>
-                                        <th style="width: 63px;">Name</th>
-                                        <th style="width: 63px;">Branch Code</th>
-                                        <th style="width: 63px;">Status</th>
-                                        <th style="width: 63px;">CompanyFk</th>
-                                        <th style="width: 63px;">Company Name</th>
-                                        <th style="width: 63px;">CreatedBy</th>
-
-                                        <th style="width: 63px;">Created Name</th>
-                                        <th style="width: 63px;">createdAt</th>
-                                        <th style="width: 63px;">updatedAt</th>
-                                        <th style="width: 63px;">MainBranch</th>
-                                        <th style="width: 63px;">Action</th>
-
+                                        <th style="width: 20px;"># </th>
+                                        <th style="width: 60px;">Full Name</th>
+                                        <th style="width: 60px;">Email </th>
+                                        <th style="width: 63px;">Phone no</th>
+                                        <th style="width: 63px;">Registration date</th>
+                                        <th style="width: 60px;">ROle</th>
+                                        {{--  {{--  <th style="width: 60px;">No of Branches</th>
+                                        <th style="width: 63px;">Created By</th>  --}}
+                                        <th style="width: 63px;">Action</th>  
                                     </tr>
                                     </thead>
                                     <tbody>
-                                    @foreach($branch as $index => $brn)
+                                        @foreach($users as $index => $key)
                                         <tr>
-                                             <td>{{ $index+1 }}</td>
-                                            <td>{{ $brn['name'] }}</td>
-                                            <td>{{ $brn['branchCode'] }}</td>
-                                            <td>{{ $brn['status'] }}</td>
-                                            <td>{{ $brn['companyFk'] }}</td>
-                                            <td>{{ $brn['companyName'] }}</td>
-                                            <td>{{ $brn['createdBy'] }}</td>
-                                            <td>{{ $brn['createdByName'] }}</td>
-                                            <td>{{ $brn['createdAt'] }}</td>
-                                            <td>{{ $brn['updatedAt'] }}</td>
-                                            <td>{{ $brn['mainBranch'] }}</td>
-
-
+                                            <td>{{ $index + 1 }}</td>
+                                            <td>{{ $key['fullName'] }}</td>
+                                            <td>{{ $key['email'] }}</td>
+                                            <td>{{ $key['phoneNumber'] }}</td>
+                                            <td>{{ $key['registrationDate'] }}</td>
+                                            <td>{{ $key['role'] }}</td>
                                             <td>
                                                 <a class="add-btn"
                                                    href=""><i
@@ -103,7 +91,7 @@
                                                             class="remove-mobile"><span></span></span></a>
 
                                                 <a class="add-btn"
-                                                   href="{{ url('efris/branches/edit/'.$brn['id']) }}"><i
+                                                   href=""><i
                                                             class="fas fa-pencil-alt"></i> <span
                                                             class="remove-mobile"><span></span></span></a>
 
@@ -118,7 +106,7 @@
 
 
                         </table>
-                       
+
                     </div>
                 </div>
             </div>

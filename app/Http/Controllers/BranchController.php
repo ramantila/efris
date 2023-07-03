@@ -110,7 +110,7 @@ class BranchController extends Controller
 
         $response =  json_decode($result);
 
-         return $DATA;
+        //  return $DATA;
 
         return redirect()->back();
 

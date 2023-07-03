@@ -21,7 +21,7 @@
                             <a href="https://radmin.themicly.com/dashboard"><i class="ik ik-home"></i></a>
                         </li>
                         <li class="breadcrumb-item">
-                            <a href="#">Sale</a>
+                            <a href="#">Company</a>
                         </li>
                     </ol>
                 </nav>
@@ -59,7 +59,7 @@
 
                                         <div class="form-group">
                                             <label for="title2">Company Type<span class="text-red">*</span></label>
-                                            <select class="form-control select2" name="type" required="">
+                                            <select class="form-control select2" name="companyType" required="">
                                                 <option value="">Select Package Type</option>
                                                 @foreach($companyTypes as  $key)
                                                     <option value="{{ $key['id'] }}">{{ $key['name'] }}</option>
@@ -123,7 +123,7 @@
                                             <div class="col-md-6">
                                                 <div class="form-group">
                                                     <label for="title8">Contact person No.<span class="text-red">*</span></label>
-                                                    <input id="title8" type="number" class="form-control" laceholder="Contact Person Phone"
+                                                    <input id="title8" type="text" class="form-control" laceholder="Contact Person Phone"
                                                     name="contactPersonPhone" required="">
                                                     <div class="help-block with-errors"></div>
                                                 </div>

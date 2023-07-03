@@ -35,7 +35,7 @@
         </div>
 
         <div class="@if (Request::is('packages-type/*')) active @endif nav-item">
-            <a href="{{ url('packages-type/view') }}"><i class="ik ik-command"></i><span>Users</span></a>
+            <a href="{{ url('efris/users/view') }}"><i class="ik ik-command"></i><span>Users</span></a>
         </div>
 
     </nav>

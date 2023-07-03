@@ -1,8 +1,7 @@
 @extends('layouts.master')
 @section('title')
-   Packages
+    Company
 @endsection
-
 @section('content')
     <div class="page-header">
         <div class="row align-items-end">
@@ -10,8 +9,8 @@
                 <div class="page-header-title">
                     <i class="ik ik-users bg-blue"></i>
                     <div class="d-inline">
-                        <h5>Packages</h5>
-                        <span>Create Package</span>
+                        <h5>Sale</h5>
+                        <span>Create Users</span>
                     </div>
                 </div>
             </div>
@@ -22,7 +21,7 @@
                             <a href="https://radmin.themicly.com/dashboard"><i class="ik ik-home"></i></a>
                         </li>
                         <li class="breadcrumb-item">
-                            <a href="#">Packages</a>
+                            <a href="#">Users</a>
                         </li>
                     </ol>
                 </nav>
@@ -36,7 +35,7 @@
         <div class="col-md-12">
             <div class="card">
                 <div class="card-header">
-                    <h3>Adding Packages</h3>
+                    <h3>Create Users</h3>
                     <div class="card-header-right">
                     </div>
                 </div>
@@ -44,74 +43,49 @@
                     <div class="row">
                         <div class="col-md-1"></div>
                         <div class="col-md-10">
-                            <form action="{{ url('efris/package/store') }}" method="POST">
+                            <form action="{{ url('efris/users/store') }}" method="POST">
                                 @csrf
                                 <div class="row">
                                     <div class="col-md-6 mr-">
                                         <div class="form-group">
-                                            <label for="title">Package Name<span class="text-red">*</span></label>
-                                            <input id="title" type="text" class="form-control" placeholder="Name"
-                                            name="name" required="">
+                                            <label for="title">Full Name<span class="text-red">*</span></label>
+                                            <input id="title" type="text" class="form-control" name="fullName"
+                                                 placeholder="Cash in hand" required="">
                                             <div class="help-block with-errors"></div>
                                         </div>
                                     </div>
 
                                     <div class="col-md-6">
                                         <div class="form-group">
-                                            {{--  <label for="title"><span class="text-red">*</span></label>  --}}
-                                           <label for="title2">Package Type<span class="text-red">*</span></label>
-                                           <select class="form-control select2" name="packagesId" required="">
-                                            <option value="">Select Package Type</option>
-                                            @foreach($packagesTypes as  $key)
-                                                <option value="{{ $key['id'] }}">{{ $key['name'] }}</option>
-                                            @endforeach
-                                        </select>
+                                            <label for="title">Email<span class="text-red">*</span></label>
+                                            <input id="title" type="text" class="form-control" name="email"
+                                                 placeholder="Debts" required="">
                                             <div class="help-block with-errors"></div>
                                         </div>
                                     </div>
 
                                 </div>
-                                
 
                                 <div class="row">
                                     <div class="col-md-6 mr-">
                                         <div class="form-group">
-                                            <label for="title"> Price <span class="text-red">*</span></label>
-                                            <input id="title" type="text" class="form-control" placeholder="Price"
-                                            name="price" required="">
-                                            <div class="help-block with-errors"></div>
-                                        </div>
-                                    </div>
-
-                                    <div class="col-md-6 mr-">
-                                         <div class="form-group">
-                                            <label for="title">Renewal Price<span class="text-red">*</span></label>
-                                            <input id="title" type="text" class="form-control" placeholder="Renewal Price"
-                                            name="renewalPrice" required="">
-                                            <div class="help-block with-errors"></div>
-                                        </div>
-                                    </div>
-
-                                </div>
-                                <div class="row">
-                                    <div class="col-md-6 mr-">
-                                        <div class="form-group">
-                                            <label for="title">Number of users<span class="text-red">*</span></label>
-                                            <input id="title" type="text" class="form-control" placeholder="Number of users"
-                                            name="noUsers" required="">
+                                            <label for="title">Phone Number<span class="text-red">*</span></label>
+                                            <input id="title" type="text" class="form-control" name="phoneNumber"
+                                                  placeholder="Float in Mobiles" required="">
                                             <div class="help-block with-errors"></div>
                                         </div>
                                     </div>
 
                                     <div class="col-md-6">
                                         <div class="form-group">
-                                            <label for="title">Number of Branches<span class="text-red">*</span></label>
-                                            <input id="title" type="number" class="form-control" placeholder="Number of Branches"
-                                            name="noBranches" required="">
+                                            <label for="title">Role<span class="text-red">*</span></label>
+                                            <input id="title" type="text" class="form-control" name="role"
+                                                  placeholder="Float in POS" required="">
                                             <div class="help-block with-errors"></div>
                                         </div>
                                     </div>
 
+                                </div>
 
                                 <div class="row">
                                     <div class="col-md-6 mr-">
@@ -123,9 +97,6 @@
                                             <button type="submit" class="btn btn-primary">Save</button>
                                         </div>
                                     </div>
-
-                                </div>
-
 
                                 </div>
                             </form>

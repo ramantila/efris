@@ -77,7 +77,7 @@
 
                                             <label for="title">Select The company<span class="text-red">*</span></label>
                                             <label for="title2">Company Type<span class="text-red">*</span></label>
-                                            <select class="form-control select2" name="type" required="">
+                                            <select class="form-control select2" name="companyId" required="">
                                                 <option value="">Select Package Type</option>
                                                 @foreach($company as $key)
                                                     <option value="{{ $key['id'] }}">{{ $key['companyName'] }}</option>
@@ -100,7 +100,7 @@
                                         <div class="form-group">
                                             <label for="title">Branch Code<span class="text-red">*</span></label>
                                             <input id="title" type="text" class="form-control" placeholder="Branch Code"
-                                            name="companyId" required="">
+                                            name="branchCode" required="">
                                             <div class="help-block with-errors"></div>
                                         </div>
                                     </div>
