@@ -9,6 +9,11 @@
             <a href="{{ url('companies/show') }}"><i class="ik ik-command"></i><span>Company</span></a>
         </div>
 
+        <div class="@if (Request::is('companies/*')) active @endif nav-item">
+            <a href="{{ url('companies/searchview') }}"><i class="ik ik-command"></i><span>Company search</span></a>
+        </div>
+
+
         <div class="@if (Request::is('company-types/*')) active @endif nav-item">
             <a href="{{ url('company-types/view') }}"><i class="ik ik-command"></i><span>Company Type</span></a>
         </div>

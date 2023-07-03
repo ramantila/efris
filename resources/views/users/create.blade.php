@@ -9,7 +9,7 @@
                 <div class="page-header-title">
                     <i class="ik ik-users bg-blue"></i>
                     <div class="d-inline">
-                        <h5>Sale</h5>
+                        <h5>Users</h5>
                         <span>Create Users</span>
                     </div>
                 </div>

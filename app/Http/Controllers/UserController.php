@@ -91,7 +91,7 @@ class UserController extends Controller
 
         $jsonData = json_encode($DATA);
 
-        $CURL = curl_init($BASE_URL . 'users');
+        $CURL = curl_init($BASE_URL . 'auth/register');
         curl_setopt($CURL, CURLOPT_POST, true);
         curl_setopt($CURL, CURLOPT_HTTPHEADER, $HEADERS);
         curl_setopt($CURL, CURLOPT_SSL_VERIFYPEER, 0);
@@ -108,9 +108,9 @@ class UserController extends Controller
         } catch (\Exception $e) {
         }
 
-        $response =  json_decode($result);
+        $response =  json_decode($result,true);
 
-        return $DATA;
+        // return $DATA;
 
         return redirect()->back();
     }

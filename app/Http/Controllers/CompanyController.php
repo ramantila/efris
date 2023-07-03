@@ -56,6 +56,76 @@ class CompanyController extends Controller
         return view('company.show', compact('company'));
     }
 
+    public function search1()
+    {
+        $BASE_URL = 'https://api.webefris.co.ug/api/v1/';
+
+        $HEADERS = array(
+            'Authorization: Bearer ' . Session::get('token')
+        );
+
+        $URL = $BASE_URL . 'companies';
+        $CURL =  curl_init();
+        curl_setopt($CURL, CURLOPT_URL, $URL);
+        curl_setopt($CURL, CURLOPT_HTTPHEADER, $HEADERS);
+        curl_setopt($CURL, CURLOPT_RETURNTRANSFER, true);
+
+        try {
+            $result = curl_exec($CURL);
+            if (curl_errno($CURL)) {
+                throw new \Exception(curl_error($CURL));
+            }
+            curl_close($CURL);
+        } catch (\Exception $e) {
+        }
+
+        $company =  json_decode($result, true);
+
+
+        return view('company.search', compact('company'));
+    }
+
+
+
+
+    public function search()
+    {
+        $BASE_URL = 'https://api.webefris.co.ug/api/v1/';
+
+        $HEADERS = array(
+            'Authorization: Bearer ' . Session::get('token')
+        );
+
+        $URL = $BASE_URL . 'companies';
+        $CURL =  curl_init();
+        curl_setopt($CURL, CURLOPT_URL, $URL);
+        curl_setopt($CURL, CURLOPT_HTTPHEADER, $HEADERS);
+        curl_setopt($CURL, CURLOPT_RETURNTRANSFER, true);
+
+        try {
+            $result = curl_exec($CURL);
+            if (curl_errno($CURL)) {
+                throw new \Exception(curl_error($CURL));
+            }
+            curl_close($CURL);
+        } catch (\Exception $e) {
+        }
+
+        $keyword = $request->input('tinNumber');
+      
+    
+        $response = Http::get('https://api.webefris.co.ug/api/v1/companies', [
+            'query' => $tinNumber,
+ 
+        ]);
+    
+        
+        $company = $response->json();
+
+
+        return view('company.search', compact('company'));
+    }
+
 
 
     public function create2(Request $request)
