@@ -58,48 +58,38 @@ class CompanyController extends Controller
 
     public function search1()
     {
-        $BASE_URL = 'https://api.webefris.co.ug/api/v1/';
-
-        $HEADERS = array(
-            'Authorization: Bearer ' . Session::get('token')
-        );
-
-        $URL = $BASE_URL . 'companies';
-        $CURL =  curl_init();
-        curl_setopt($CURL, CURLOPT_URL, $URL);
-        curl_setopt($CURL, CURLOPT_HTTPHEADER, $HEADERS);
-        curl_setopt($CURL, CURLOPT_RETURNTRANSFER, true);
-
-        try {
-            $result = curl_exec($CURL);
-            if (curl_errno($CURL)) {
-                throw new \Exception(curl_error($CURL));
-            }
-            curl_close($CURL);
-        } catch (\Exception $e) {
-        }
-
-        $company =  json_decode($result, true);
-
-
-        return view('company.search', compact('company'));
+        $tinNumber = '';
+        return view('company.search',compact('tinNumber'));
     }
 
 
 
 
-    public function search()
+    public function search(Request $request)
     {
+
+        $tinNumber = $request->tinNumber;
         $BASE_URL = 'https://api.webefris.co.ug/api/v1/';
 
         $HEADERS = array(
+            'Accept: Application/json',
+            'Content-type: Application/json',
             'Authorization: Bearer ' . Session::get('token')
         );
 
-        $URL = $BASE_URL . 'companies';
-        $CURL =  curl_init();
-        curl_setopt($CURL, CURLOPT_URL, $URL);
+        $DATA = [
+            "tinNumber" => $request->tinNumber,
+            "businessRegistrationNumber" => "",
+        ];
+
+        $jsonData = json_encode($DATA);
+
+        $CURL = curl_init($BASE_URL . 'tin-number/getTinInformation');
+        curl_setopt($CURL, CURLOPT_POST, true);
         curl_setopt($CURL, CURLOPT_HTTPHEADER, $HEADERS);
+        curl_setopt($CURL, CURLOPT_SSL_VERIFYPEER, 0);
+        curl_setopt($CURL, CURLOPT_SSL_VERIFYHOST, 0);
+        curl_setopt($CURL, CURLOPT_POSTFIELDS, $jsonData);
         curl_setopt($CURL, CURLOPT_RETURNTRANSFER, true);
 
         try {
@@ -111,19 +101,9 @@ class CompanyController extends Controller
         } catch (\Exception $e) {
         }
 
-        $keyword = $request->input('tinNumber');
-      
-    
-        $response = Http::get('https://api.webefris.co.ug/api/v1/companies', [
-            'query' => $tinNumber,
- 
-        ]);
-    
-        
-        $company = $response->json();
+       $company =  json_decode($result);
 
-
-        return view('company.search', compact('company'));
+        return view('company.search', compact('company','tinNumber'));
     }
 
 

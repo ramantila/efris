@@ -2,7 +2,6 @@
 @section('title')
     Company
 @endsection
-
 @section('content')
     <div class="page-header">
         <div class="row align-items-end">
@@ -10,8 +9,8 @@
                 <div class="page-header-title">
                     <i class="ik ik-users bg-blue"></i>
                     <div class="d-inline">
-                        <h5>Branches</h5>
-                        <span>Update Branch</span>
+                        <h5>Users</h5>
+                        <span>Update Users</span>
                     </div>
                 </div>
             </div>
@@ -22,7 +21,7 @@
                             <a href="https://radmin.themicly.com/dashboard"><i class="ik ik-home"></i></a>
                         </li>
                         <li class="breadcrumb-item">
-                            <a href="#">Branch</a>
+                            <a href="#">Users</a>
                         </li>
                     </ol>
                 </nav>
@@ -36,7 +35,7 @@
         <div class="col-md-12">
             <div class="card">
                 <div class="card-header">
-                    <h3>Update Branches</h3>
+                    <h3>Update Users</h3>
                     <div class="card-header-right">
                     </div>
                 </div>
@@ -44,27 +43,23 @@
                     <div class="row">
                         <div class="col-md-1"></div>
                         <div class="col-md-10">
-                            <form action="{{ url('efris/branches/update/'.$branch_id) }}" method="POST">
+                            <form action="{{ url('efris/users/store') }}" method="POST">
                                 @csrf
                                 <div class="row">
                                     <div class="col-md-6 mr-">
                                         <div class="form-group">
-                                            <label for="title">Branch Name<span class="text-red">*</span></label>
-                                            <input id="title" value="{{ $branch['name'] }}" type="text" class="form-control" placeholder="Branch Name"
-                                            name="name" required="">
+                                            <label for="title">Full Name<span class="text-red">*</span></label>
+                                            <input id="title" type="text" class="form-control" name="fullName"
+                                                 placeholder="Cash in hand" required="">
                                             <div class="help-block with-errors"></div>
                                         </div>
                                     </div>
 
                                     <div class="col-md-6">
                                         <div class="form-group">
-                                            <label for="title">Is Main Branch<span class="text-red">*</span></label>
-                                            <select class="form-control select2" name="isMainBranch" required="">
-                                            {{-- <select id="cat" name="isMainBranch" required=""> --}}
-                                            <option value="True">True</option>
-                                            <option value="False">False</option>
-
-                                        </select>
+                                            <label for="title">Email<span class="text-red">*</span></label>
+                                            <input id="title" type="email" class="form-control" name="email"
+                                                 placeholder="Debts" required="">
                                             <div class="help-block with-errors"></div>
                                         </div>
                                     </div>
@@ -74,33 +69,40 @@
                                 <div class="row">
                                     <div class="col-md-6 mr-">
                                         <div class="form-group">
-
-                                            <label for="title">Select The company<span class="text-red">*</span></label>
-                                            <label for="title2">Company Type<span class="text-red">*</span></label>
-                                            <select class="form-control select2" name="companyId" required="">
-                                                <option value="">Select Package Type</option>
-                                                @foreach($company as $key)
-                                                    <option value="{{ $key['id'] }}">{{ $key['companyName'] }}</option>
-                                                @endforeach
-                                            </select>
-
-
-
-                                            {{-- <select id="cat2" class= "form-select"  name="isMainBranch" required="">
-                                                <option value="">Select The company</option>
-                                                @foreach ($company as $key)
-                                                    <option value="{{ $key['id'] }}">{{ $key['companyName'] }}</option>
-                                                @endforeach
-                                            </select> --}}
+                                            <label for="title">Phone Number<span class="text-red">*</span></label>
+                                            <input id="title" type="text" class="form-control" name="phoneNumber"
+                                                  placeholder="Float in Mobiles" required="">
                                             <div class="help-block with-errors"></div>
                                         </div>
                                     </div>
 
                                     <div class="col-md-6">
                                         <div class="form-group">
-                                            <label for="title">Branch Code<span class="text-red">*</span></label>
-                                            <input id="title"  value='{{ $branch['branchCode'] }}' type="text" class="form-control" placeholder="Branch Code"
-                                            name="branchCode" required="">
+                                            <label for="title">Role<span class="text-red">*</span></label>
+                                            <input id="title" type="text" class="form-control" name="role"
+                                                  placeholder="Role" required="">
+                                            <div class="help-block with-errors"></div>
+                                        </div>
+                                    </div>
+
+                                </div>
+
+                                
+                                <div class="row">
+                                    <div class="col-md-6 mr-">
+                                        <div class="form-group">
+                                            <label for="title">Password<span class="text-red">*</span></label>
+                                            <input id="title" type="text" class="form-control" name="password"
+                                                  placeholder="password" required="">
+                                            <div class="help-block with-errors"></div>
+                                        </div>
+                                    </div>
+
+                                    <div class="col-md-6">
+                                        <div class="form-group">
+                                            <label for="title">Confirm Password<span class="text-red">*</span></label>
+                                            <input id="title" type="text" class="form-control" name="confirmPassword"
+                                                  placeholder="confirm" required="">
                                             <div class="help-block with-errors"></div>
                                         </div>
                                     </div>

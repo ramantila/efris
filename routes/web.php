@@ -39,8 +39,8 @@ Route::group(['prefix' => 'efris/package'], function () {
     Route::get('view', [App\Http\Controllers\PackageController::class, 'index']);
     Route::get('create', [App\Http\Controllers\PackageController::class, 'create']);
     Route::post('store',[App\Http\Controllers\PackageController::class, 'store']);
-    Route::post('edit',[App\Http\Controllers\PackageController::class, 'edit']);
-    Route::post('update',[App\Http\Controllers\PackageController::class, 'update']);
+    Route::get('edit/{id}',[App\Http\Controllers\PackageController::class, 'edit']);
+    Route::post('update/{id}',[App\Http\Controllers\PackageController::class, 'update']);
 
 });
 
@@ -53,12 +53,12 @@ Route::group(['prefix' => 'efris/package'], function () {
     Route::get('show', [App\Http\Controllers\CompanyController::class, 'index2']);
     Route::get('create', [App\Http\Controllers\CompanyController::class, 'create2']);
     Route::post('store',[App\Http\Controllers\CompanyController::class, 'store']);
-    Route::get('edit',[App\Http\Controllers\CompanyController::class, 'edit']);
-    Route::post('update',[App\Http\Controllers\CompanyController::class, 'update']);
-    Route::get('data',[App\Http\Controllers\CompanyController::class, 'search']);
+    Route::get('edit/{id}',[App\Http\Controllers\CompanyController::class, 'edit']);
+    Route::post('update/{id}',[App\Http\Controllers\CompanyController::class, 'update']);
+    Route::post('data',[App\Http\Controllers\CompanyController::class, 'search']);
     Route::get('searchview',[App\Http\Controllers\CompanyController::class, 'search1']);
 
-    
+
 });
 
 
@@ -67,8 +67,8 @@ Route::group(['prefix' => 'company-types'], function () {
     Route::get('view', [App\Http\Controllers\Company_tpyesController::class, 'index']);
     Route::get('create', [App\Http\Controllers\Company_tpyesController::class, 'create']);
     Route::post('store',[App\Http\Controllers\Company_tpyesController::class, 'store']);
-    Route::get('edit',[App\Http\Controllers\Company_tpyesController::class, 'edit']);
-    Route::post('update',[App\Http\Controllers\Company_tpyesController::class, 'update']);
+    Route::get('edit{id}',[App\Http\Controllers\Company_tpyesController::class, 'edit']);
+    Route::post('update{id}',[App\Http\Controllers\Company_tpyesController::class, 'update']);
 });
 
 
@@ -88,8 +88,8 @@ Route::group(['prefix' => 'efris/product-catalogue'], function () {
     Route::get('view', [App\Http\Controllers\Product_catalogueController::class, 'index']);
     Route::get('create', [App\Http\Controllers\Product_catalogueController::class, 'create']);
     Route::post('store',[App\Http\Controllers\Product_catalogueController::class, 'store']);
-    Route::get('edit',[App\Http\Controllers\Product_catalogueController::class, 'edit']);
-    Route::post('update',[App\Http\Controllers\Product_catalogueController::class, 'update']);
+    Route::get('edit/{id}',[App\Http\Controllers\Product_catalogueController::class, 'edit']);
+    Route::post('update/{id}',[App\Http\Controllers\Product_catalogueController::class, 'update']);
 
 });
 
@@ -99,8 +99,8 @@ Route::group(['prefix' => 'efris/companyproducts'], function () {
     Route::get('view', [App\Http\Controllers\CompamyproductController::class, 'index']);
     Route::get('create', [App\Http\Controllers\CompamyproductController::class, 'create']);
     Route::post('store',[App\Http\Controllers\CompamproductController::class, 'store']);
-    Route::get('edit',[App\Http\Controllers\CompamproductController::class, 'edit']);
-    Route::post('update',[App\Http\Controllers\CompamproductController::class, 'update']);
+    Route::get('edit/{id}',[App\Http\Controllers\CompamproductController::class, 'edit']);
+    Route::post('update/{id}',[App\Http\Controllers\CompamproductController::class, 'update']);
 
 });
 
@@ -110,7 +110,7 @@ Route::group(['prefix' => 'efris/users'], function () {
     Route::get('view', [App\Http\Controllers\UserController::class, 'index']);
     Route::get('create', [App\Http\Controllers\UserController::class, 'create']);
     Route::post('store',[App\Http\Controllers\UserController::class, 'store']);
-    Route::get('edit',[App\Http\Controllers\UserController::class, 'edit']);
-    Route::post('update',[App\Http\Controllers\UserController::class, 'update']);
+    Route::get('edit/{id}',[App\Http\Controllers\UserController::class, 'edit']);
+    Route::post('update/{id}',[App\Http\Controllers\UserController::class, 'update']);
 
 });

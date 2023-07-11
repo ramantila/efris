@@ -116,7 +116,7 @@
                                                      class="remove-mobile"><span></span></span></a>
 
                                          <a class="add-btn"
-                                            href=""><i
+                                            href="{{ url('companies/edit/'.$com['id']) }}"><i
                                                      class="fas fa-pencil-alt"></i> <span
                                                      class="remove-mobile"><span></span></span></a>
 

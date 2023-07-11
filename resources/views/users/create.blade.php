@@ -58,7 +58,7 @@
                                     <div class="col-md-6">
                                         <div class="form-group">
                                             <label for="title">Email<span class="text-red">*</span></label>
-                                            <input id="title" type="text" class="form-control" name="email"
+                                            <input id="title" type="email" class="form-control" name="email"
                                                  placeholder="Debts" required="">
                                             <div class="help-block with-errors"></div>
                                         </div>
@@ -80,7 +80,29 @@
                                         <div class="form-group">
                                             <label for="title">Role<span class="text-red">*</span></label>
                                             <input id="title" type="text" class="form-control" name="role"
-                                                  placeholder="Float in POS" required="">
+                                                  placeholder="Role" required="">
+                                            <div class="help-block with-errors"></div>
+                                        </div>
+                                    </div>
+
+                                </div>
+
+                                
+                                <div class="row">
+                                    <div class="col-md-6 mr-">
+                                        <div class="form-group">
+                                            <label for="title">Password<span class="text-red">*</span></label>
+                                            <input id="title" type="text" class="form-control" name="password"
+                                                  placeholder="password" required="">
+                                            <div class="help-block with-errors"></div>
+                                        </div>
+                                    </div>
+
+                                    <div class="col-md-6">
+                                        <div class="form-group">
+                                            <label for="title">Confirm Password<span class="text-red">*</span></label>
+                                            <input id="title" type="text" class="form-control" name="confirmPassword"
+                                                  placeholder="confirm" required="">
                                             <div class="help-block with-errors"></div>
                                         </div>
                                     </div>

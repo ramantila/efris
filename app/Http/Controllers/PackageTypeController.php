@@ -108,6 +108,34 @@ class PackageTypeController extends Controller
 
        return redirect('packages-type/view');
     }
+    public function update()
+    {
 
+        $url = 'https://api.webefris.co.ug/api/v1/package-type'; // Replace with your API endpoint URL
+        $data = ['key1' => 'value1',
+
+        'key2' => 'value2']; // Replace with the data you want to update
+
+        $ch = curl_init($url);
+        curl_setopt($ch, CURLOPT_CUSTOMREQUEST, 'PUT'); // Use PUT method for update
+        curl_setopt($ch, CURLOPT_POSTFIELDS, http_build_query($data)); // Pass the data to be updated
+        curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
+        $response = curl_exec($ch);
+        curl_close($ch);
+
+
+        if ($response === false) {
+            // Handle cURL error
+            $errorMessage = curl_error($ch);
+            // ...
+        } else {
+            // Process the response
+            $responseData = json_decode($response, true);
+            // ...
+
+            return redirect('');
+        }
+
+    }
 
 }

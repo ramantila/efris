@@ -14,6 +14,8 @@
                     </div>
                 </div>
             </div>
+
+
             <div class="col-lg-4">
                 <nav class="breadcrumb-container" aria-label="breadcrumb">
                     <ol class="breadcrumb">
@@ -36,7 +38,7 @@
             <div class="card">
                 <div class="card-header row">
                     <div class="col col-sm-2">
-                            <a href="{{ url('efris/package/create') }}" class="btn btn-sm btn-primary btn-rounded">Add Company </a>
+                            <a href="{{ url('efris/users/create') }}" class="btn btn-sm btn-primary btn-rounded">Add Company </a>
                     </div>
                     <div class="col col-sm-1">
                         <div class="card-options d-inline-block">
@@ -69,10 +71,10 @@
                                         <th style="width: 60px;">Email </th>
                                         <th style="width: 63px;">Phone no</th>
                                         <th style="width: 63px;">Registration date</th>
-                                        <th style="width: 60px;">ROle</th>
-                                        {{--  {{--  <th style="width: 60px;">No of Branches</th>
+                                        <th style="width: 60px;">Role</th>
+                                       {{--  <th style="width: 60px;">No of Branches</th>
                                         <th style="width: 63px;">Created By</th>  --}}
-                                        <th style="width: 63px;">Action</th>  
+                                        <th style="width: 63px;">Action</th>
                                     </tr>
                                     </thead>
                                     <tbody>
@@ -91,7 +93,7 @@
                                                             class="remove-mobile"><span></span></span></a>
 
                                                 <a class="add-btn"
-                                                   href=""><i
+                                                   href="{{ url('efris/users/edit/'.$key['id']) }}"><i
                                                             class="fas fa-pencil-alt"></i> <span
                                                             class="remove-mobile"><span></span></span></a>
 

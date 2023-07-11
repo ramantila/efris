@@ -93,7 +93,7 @@
                                                             class="remove-mobile"><span></span></span></a>
 
                                                 <a class="add-btn"
-                                                   href=""><i
+                                                   href="{{ url('efris/package/edit/'.$key['id']) }}"><i
                                                             class="fas fa-pencil-alt"></i> <span
                                                             class="remove-mobile"><span></span></span></a>
 

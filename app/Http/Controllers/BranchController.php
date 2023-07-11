@@ -117,16 +117,16 @@ class BranchController extends Controller
         // return redirect('efris/packages/view');
     }
 
-    public function edit(Request $request)
+    public function edit($branch_id)
     {
 
         $BASE_URL = 'https://api.webefris.co.ug/api/v1/';
 
         $HEADERS = array(
-            'Authorization: Bearer ' . Session::get('token')
+            'Authorization: Bearer '.Session::get('token')
         );
 
-        $URL = $BASE_URL . 'branches';
+        $URL = $BASE_URL.'branches/'.$branch_id;
         $CURL =  curl_init();
         curl_setopt($CURL, CURLOPT_URL, $URL);
         curl_setopt($CURL, CURLOPT_HTTPHEADER, $HEADERS);
@@ -134,24 +134,51 @@ class BranchController extends Controller
 
         try {
             $result = curl_exec($CURL);
-            if (curl_errno($CURL)) {
+            if (curl_errno($CURL)){
                 throw new \Exception(curl_error($CURL));
             }
             curl_close($CURL);
-        } catch (\Exception $e) {
         }
-        // $id = $request->input('id');
-        $branchedit =  json_decode($result, true);
+        catch (\Exception $e){
 
-        return view('branch.edit', compact('branchedit'));
+        }
+
+       $branch =  json_decode($result,true);
+
+       $URL = $BASE_URL.'companies/';
+       $CURL =  curl_init();
+       curl_setopt($CURL, CURLOPT_URL, $URL);
+       curl_setopt($CURL, CURLOPT_HTTPHEADER, $HEADERS);
+       curl_setopt($CURL, CURLOPT_RETURNTRANSFER, true);
+
+       try {
+           $result = curl_exec($CURL);
+           if (curl_errno($CURL)){
+               throw new \Exception(curl_error($CURL));
+           }
+           curl_close($CURL);
+       }
+       catch (\Exception $e){
+
+       }
+
+      $company =  json_decode($result,true);
+
+    //   return $company;
+      
+        return view('branch.edit', compact('branch','company','branch_id'));
     }
 
 
 
-    public function update(Request $request)
+    public function update(Request $request, $id)
     {
 
-        $url = 'https://api.webefris.co.ug/api/v1/branches'; // Replace with your API endpoint URL
+        $url = 'https://api.webefris.co.ug/api/v1/branches/'.$id; // Replace with your API endpoint URL
+       
+        $HEADERS = array(
+            'Authorization: Bearer '.Session::get('token')
+        );
         $data = [
 
         'id'=>$request->id,
@@ -164,6 +191,8 @@ class BranchController extends Controller
         curl_setopt($ch, CURLOPT_CUSTOMREQUEST, 'PUT'); // Use PUT method for update
         curl_setopt($ch, CURLOPT_POSTFIELDS, http_build_query($data)); // Pass the data to be updated
         curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
+        curl_setopt($ch, CURLOPT_HTTPHEADER, $HEADERS);
+
         $response = curl_exec($ch);
         curl_close($ch);
 
@@ -176,8 +205,8 @@ class BranchController extends Controller
             // Process the response
             $responseData = json_decode($response, true);
             // ...
-
-            return redirect('efris/branches/show');
+            return $responseData;
+            return redirect('efris/branches/view',);
         }
 
     }

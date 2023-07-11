@@ -85,6 +85,8 @@ class UserController extends Controller
             "email" => $request->email,
             "phoneNumber" => $request->phoneNumber,
             "role" => $request->role,
+            "password"=>$request->password,
+            "confirmPassword"=>$request->confirmPassword,
             "registrationDate" => Carbon::now(),
 
         ];
@@ -113,5 +115,66 @@ class UserController extends Controller
         // return $DATA;
 
         return redirect()->back();
+    }
+
+
+    public function edit(Request $request)
+    {
+
+        $BASE_URL = 'https://api.webefris.co.ug/api/v1/';
+
+        $HEADERS = array(
+            'Authorization: Bearer ' . Session::get('token')
+        );
+
+        $URL = $BASE_URL . 'users';
+        $CURL =  curl_init();
+        curl_setopt($CURL, CURLOPT_URL, $URL);
+        curl_setopt($CURL, CURLOPT_HTTPHEADER, $HEADERS);
+        curl_setopt($CURL, CURLOPT_RETURNTRANSFER, true);
+
+        try {
+            $result = curl_exec($CURL);
+            if (curl_errno($CURL)) {
+                throw new \Exception(curl_error($CURL));
+            }
+            curl_close($CURL);
+        } catch (\Exception $e) {
+        }
+        // $id = $request->input('id');
+        $user =  json_decode($result, true);
+  
+        return view('users.edit', compact('user'));
+    }
+
+
+    public function update()
+    {
+
+        $url = 'https://api.webefris.co.ug/api/v1/companies'; // Replace with your API endpoint URL
+        $data = ['key1' => 'value1',
+
+        'key2' => 'value2']; // Replace with the data you want to update
+
+        $ch = curl_init($url);
+        curl_setopt($ch, CURLOPT_CUSTOMREQUEST, 'PUT'); // Use PUT method for update
+        curl_setopt($ch, CURLOPT_POSTFIELDS, http_build_query($data)); // Pass the data to be updated
+        curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
+        $response = curl_exec($ch);
+        curl_close($ch);
+
+
+        if ($response === false) {
+            // Handle cURL error
+            $errorMessage = curl_error($ch);
+            // ...
+        } else {
+            // Process the response
+            $responseData = json_decode($response, true);
+            // ...
+
+            return redirect('');
+        }
+
     }
 }
