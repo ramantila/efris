@@ -1,4 +1,9 @@
-@extends('layouts.master')
+@extends('layouts.master')\
+
+<script
+src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.9.4/Chart.js">
+</script>
+
 @section('title')
     Company
 @endsection
@@ -61,7 +66,7 @@
                             <div class="col-8">
                                 <h4 class="mb-0">200
                                 </h4>
-                                <p class="mb-0">Today Sales</p>
+                                <p class="mb-0">Total Sales Receipts</p>
                             </div>
                             <div class="col-4 text-right">
                                 <i class="ik f-30">৳</i>
@@ -112,16 +117,19 @@
             <div class="col-xl-6 col-md-6">
                 <div class="card table-card">
                     <div class="card-header">
-                        <h3>Recent Sales</h3>
-                        <div class="card-header-right">
+                        <h3>Recent Sales on chart</h3>
+                        {{-- <canvas id="myChart" style="width:100%;max-width:700px"></canvas> --}}
+
+
+                        {{-- <div class="card-header-right">
                             <ul class="list-unstyled card-option">
                                 <li><i class="ik ik-chevron-left action-toggle"></i></li>
                                 <li><i class="ik ik-minus minimize-card"></i></li>
                                 <li><i class="ik ik-x close-card"></i></li>
                             </ul>
-                        </div>
+                        </div> --}}
                     </div>
-                    <div class="card-block">
+                    {{-- <div class="card-block">
                         <div class="table-responsive">
                             <table class="table table-hover mb-0">
                                 <thead>
@@ -140,14 +148,14 @@
                                 </tbody>
                             </table>
                         </div>
-                    </div>
+                    </div> --}}
                 </div>
             </div>
 
             <div class="col-xl-6 col-md-6">
                 <div class="card table-card">
                     <div class="card-header">
-                        <h3>Recent Cammissionss</h3>
+                        <h3>Recent Receipts</h3>
                         <div class="card-header-right">
                             <ul class="list-unstyled card-option">
                                 <li><i class="ik ik-chevron-left action-toggle"></i></li>
@@ -218,4 +226,24 @@
             </div>
         </div>
     </div>
+
+    <script>
+const xValues = ["Italy", "France", "Spain", "USA", "Argentina"];
+const yValues = [55, 49, 44, 24, 15];
+const barColors = ["red", "green","blue","orange","brown"];
+
+new Chart("myChart", {
+  type: "bar",
+  data: {
+    labels: xValues,
+    datasets: [{
+      backgroundColor: barColors,
+      data: yValues
+    }]
+  },
+  options: {...}
+});
+        
+    </script>
+
 @endsection

@@ -57,6 +57,8 @@ Route::group(['prefix' => 'efris/package'], function () {
     Route::post('update/{id}',[App\Http\Controllers\CompanyController::class, 'update']);
     Route::post('data',[App\Http\Controllers\CompanyController::class, 'search']);
     Route::get('searchview',[App\Http\Controllers\CompanyController::class, 'search1']);
+    Route::get('details/{id}',[App\Http\Controllers\CompanyController::class, 'details']);
+
 
 
 });

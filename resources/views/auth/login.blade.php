@@ -25,14 +25,14 @@
                                 <i class="ik ik-lock"></i>
                             </div>
                             <div class="row">
-                                <div class="col text-left">
+                                <div class=>
                                     <label class="custom-control custom-checkbox">
-                                        <input type="checkbox" class="custom-control-input" id="item_checkbox"
-                                            name="item_checkbox" value="option1">
-                                        <span class="custom-control-label">&nbsp;Remember Me</span>
-                                    </label>
+                                        {{-- <input type="checkbox" class="custom-control-input" id="item_checkbox"
+                                            name="item_checkbox" value="option1"> --}}
+                                         {{-- <span class="custom-control-label">&nbsp;Remember Me</span>  --}}
+                                    </label> 
                                 </div>
-                                <div class="col text-right">
+                                <div class="col text-center">
                                     <a class="btn text-danger" href="https://radmin.themicly.com/password/forget">
                                         Forgot Password?
                                     </a>

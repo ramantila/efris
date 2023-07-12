@@ -185,7 +185,7 @@
             </div>
 
             <!-- initiate chat section-->
-            <aside class="right-sidebar">
+            {{-- <aside class="right-sidebar">
                 <div class="sidebar-chat" data-plugin="chat-sidebar">
                     <div class="sidebar-chat-info">
                         <h6>Chat List</h6>
@@ -343,20 +343,20 @@
                         </div>
                     </form>
                 </div>
-            </div>
+            </div> --}}
 
             <!-- initiate footer section-->
             <footer class="footer">
                 <div class="w-100 clearfix">
                     <span class="text-center text-sm-left d-md-inline-block">
                         v3.5.0 Copyright © 2023 - WebCorp
-                        <i class="fa fa-heart text-danger"></i>
+                        {{-- <i class="fa fa-heart text-danger"></i> --}}
                     </span>
                     <span class="float-none float-sm-right mt-1 mt-sm-0 text-center">
                         Developed by
                         <a class="text-dark" target="_blank" href="">WebCorp</a>
                         </a>
-                        with <i class="fa fa-heart text-danger"></i>
+                        {{-- with <i class="fa fa-heart text-danger"></i> --}}
                     </span>
                 </div>
             </footer>

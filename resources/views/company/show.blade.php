@@ -111,7 +111,7 @@
 
                                         <td>
                                             <a class="add-btn"
-                                            href=""><i
+                                            href="{{ url('companies/details/'.$com['id']) }}"><i
                                                      class="fas fa-eye"></i> <span
                                                      class="remove-mobile"><span></span></span></a>
 
