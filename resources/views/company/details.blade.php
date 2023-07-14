@@ -38,34 +38,20 @@
                     <ul class="nav nav-pills custom-pills" id="pills-tab" role="tablist">
                         <li class="nav-item">
                             <a class="nav-link active" id="product-tab" data-toggle="pill" href="#product-month"
-                                role="tab" aria-controls="pills-timeline" aria-selected="true">Branch</a>
+                                role="tab" aria-controls="pills-timeline" aria-selected="true">Company</a>
                         </li>
                         <li class="nav-item">
                             <a class="nav-link" id="services-tab" data-toggle="pill" href="#services-month" role="tab"
-                                aria-controls="pills-profile" aria-selected="false">User</a>
+                                aria-controls="pills-profile" aria-selected="false">Branch</a>
                         </li>
                         <li class="nav-item">
                             <a class="nav-link" id="other-tab" data-toggle="pill" href="#other-month" role="tab"
-                                aria-controls="pills-profile" aria-selected="false">Other</a>
+                                aria-controls="pills-profile" aria-selected="false">User</a>
                         </li>
                     </ul>
                     <div class="tab-content" id="pills-tabContent">
                         <div class="tab-pane fade show active" id="current-month" role="tabpanel"
                             aria-labelledby="product-tab">
-                            <div class="card-body">
-                                <div class=" mt-0">
-                                    branch content
-                                </div>
-                            </div>
-                        </div>
-                        <div class="tab-pane fade" id="services-month" role="tabpanel" aria-labelledby="services-tab">
-                            <div class="card-body">
-                                <div class=" mt-0">
-                                    user content
-                                </div>
-                            </div>
-                        </div>
-                        <div class="tab-pane fade" id="other-month" role="tabpanel" aria-labelledby="other-tab">
                             <div class="card-body">
                                 <div class=" mt-0">
                                     <div class="dt-responsive">
@@ -97,6 +83,7 @@
                                             <tbody>
                                                 {{-- @foreach ($compantdetails as $index => $com) --}}
                                                 <tr>
+                                                    <td></td>
                                                     {{-- <td>{{ $index+1 }}</td> --}}
                                                     <td>{{ $companydetails['companyName'] }}</td>
                                                     <td>{{ $companydetails['companyType'] }}</td>
@@ -140,7 +127,81 @@
                                             </tbody>
 
                                         </table>
+                                    </div>                                </div>
+                            </div>
+                        </div>
+                        <div class="tab-pane fade" id="services-month" role="tabpanel" aria-labelledby="services-tab">
+                            <div class="card-body">
+                                <div class=" mt-0">
+                                    <div class="dt-responsive">
+                                        <table id="data_table" class="table">
+                                            <thead>
+                                                <thead>
+                                                    <tr>
+                                                        <th style="width: 63px;">#</th>
+                                                        <th style="width: 63px;">Name</th>
+                                                        <th style="width: 63px;">Branch Code</th>
+                                                        <th style="width: 63px;">Status</th>
+                                                        <th style="width: 63px;">CompanyFk</th>
+                                                        <th style="width: 63px;">Company Name</th>
+                                                        <th style="width: 63px;">CreatedBy</th>
+                
+                                                        <th style="width: 63px;">Created Name</th>
+                                                        <th style="width: 63px;">createdAt</th>
+                                                        <th style="width: 63px;">updatedAt</th>
+                                                        <th style="width: 63px;">MainBranch</th>
+                                                        {{-- <th style="width: 63px;">Action</th> --}}
+                
+                                                    </tr>
+                                                    </thead>
+                                                    <tbody>
+                                                    {{-- @foreach($branchdetails as $index => $brn) --}}
+                                                        <tr>
+                                                             {{-- <td>{{ $index+1 }}</td> --}}
+                                                             <td></td>
+                                                            <td>{{ $branchdetails['name'] }}</td>
+                                                            <td>{{ $branchdetails['branchCode'] }}</td>
+                                                            <td>{{ $branchdetails['status'] }}</td>
+                                                            <td>{{ $branchdetails['companyFk'] }}</td>
+                                                            <td>{{ $branchdetails['companyName'] }}</td>
+                                                            <td>{{ $branchdetails['createdBy'] }}</td>
+                                                            <td>{{ $branchdetails['createdByName'] }}</td>
+                                                            <td>{{ $branchdetails['createdAt'] }}</td>
+                                                            <td>{{ $branchdetails['updatedAt'] }}</td>
+                                                            <td>{{ $branchdetails['mainBranch'] }}</td>
+                
+                
+                                                            {{-- <td> --}}
+                                                                {{-- <a class="add-btn"
+                                                                   href=""><i
+                                                                            class="fas fa-eye"></i> <span
+                                                                            class="remove-mobile"><span></span></span></a>
+                
+                                                                <a class="add-btn"
+                                                                   href="{{ url('efris/branches/edit/'.$brn['id']) }}"><i
+                                                                            class="fas fa-pencil-alt"></i> <span
+                                                                            class="remove-mobile"><span></span></span></a>
+                
+                                                                <a class="add-btn"
+                                                                   href="https://product.geniusocean.com/kingcommerce/kingcommerce/admin/products/types"><i
+                                                                            class="fas fa-trash"></i> <span
+                                                                            class="remove-mobile"><span></span></span></a> --}}
+                                                            {{-- </td> --}}
+                                                        </tr>
+                                                        {{-- @endforeach --}}
+                                                    </tbody>
+                
+                
+                                        </table>
+                                       
                                     </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="tab-pane fade" id="other-month" role="tabpanel" aria-labelledby="other-tab">
+                            <div class="card-body">
+                                <div class=" mt-0">
+                                  ....
                                 </div>
                             </div>
                         </div>
