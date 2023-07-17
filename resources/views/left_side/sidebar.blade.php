@@ -12,8 +12,8 @@
                 <a href="{{ url('companies/show') }}" 
                     class="menu-item @if (Request::is('')) active @endif">Company</a>
                
-                <a href="{{ url('companies/searchview') }}"
-                    class="menu-item @if (Request::is()) active @endif">Company Search </a>
+                {{-- <a href="{{ url('companies/searchview') }}"
+                    class="menu-item @if (Request::is()) active @endif">Company Search </a> --}}
              
                 <a href="{{ url('company-types/view') }}"
                     class="menu-item @if (Request::is()) active @endif">Company types</a>

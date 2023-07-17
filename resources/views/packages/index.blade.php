@@ -21,7 +21,7 @@
                             <a href="https://radmin.themicly.com/dashboard"><i class="ik ik-home"></i></a>
                         </li>
                         <li class="breadcrumb-item">
-                            <a href="#">Company</a>
+                            <a href="#">Packages</a>
                         </li>
                     </ol>
                 </nav>
@@ -36,7 +36,7 @@
             <div class="card">
                 <div class="card-header row">
                     <div class="col col-sm-2">
-                            <a href="{{ url('efris/package/create') }}" class="btn btn-sm btn-primary btn-rounded">Add Company </a>
+                            <a href="{{ url('efris/package/create') }}" class="btn btn-sm btn-primary btn-rounded">Add Package </a>
                     </div>
                     <div class="col col-sm-1">
                         <div class="card-options d-inline-block">

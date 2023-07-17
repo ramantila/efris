@@ -59,6 +59,9 @@ class CompanyController extends Controller
     public function search1()
     {
         $tinNumber = '';
+
+      
+
         return view('company.search',compact('tinNumber'));
     }
 
@@ -103,7 +106,24 @@ class CompanyController extends Controller
 
        $company =  json_decode($result);
 
-        return view('company.search', compact('company','tinNumber'));
+       $URL = $BASE_URL . 'packages';
+        $CURL =  curl_init();
+        curl_setopt($CURL, CURLOPT_URL, $URL);
+        curl_setopt($CURL, CURLOPT_HTTPHEADER, $HEADERS);
+        curl_setopt($CURL, CURLOPT_RETURNTRANSFER, true);
+
+        try {
+            $result = curl_exec($CURL);
+            if (curl_errno($CURL)) {
+                throw new \Exception(curl_error($CURL));
+            }
+            curl_close($CURL);
+        } catch (\Exception $e) {
+        }
+
+       $packages =  json_decode($result, true);
+
+        return view('company.search', compact('company','tinNumber','packages'));
     }
 
 

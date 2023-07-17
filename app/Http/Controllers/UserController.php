@@ -64,7 +64,42 @@ class UserController extends Controller
 
         $companyTypes =  json_decode($result, true);
 
-        return view('users.create', compact('companyTypes'));
+
+        $URL = $BASE_URL . 'companies/';
+        $CURL =  curl_init();
+        curl_setopt($CURL, CURLOPT_URL, $URL);
+        curl_setopt($CURL, CURLOPT_HTTPHEADER, $HEADERS);
+        curl_setopt($CURL, CURLOPT_RETURNTRANSFER, true);
+
+        try {
+            $result = curl_exec($CURL);
+            if (curl_errno($CURL)) {
+                throw new \Exception(curl_error($CURL));
+            }
+            curl_close($CURL);
+        } catch (\Exception $e) {
+        }
+
+          $companydetails =  json_decode($result, true);
+
+       $URL = $BASE_URL . 'branches/';
+        $CURL =  curl_init();
+        curl_setopt($CURL, CURLOPT_URL, $URL);
+        curl_setopt($CURL, CURLOPT_HTTPHEADER, $HEADERS);
+        curl_setopt($CURL, CURLOPT_RETURNTRANSFER, true);
+
+        try {
+            $result = curl_exec($CURL);
+            if (curl_errno($CURL)) {
+                throw new \Exception(curl_error($CURL));
+            }
+            curl_close($CURL);
+        } catch (\Exception $e) {
+        }
+
+          $branchdetails =  json_decode($result, true);
+
+        return view('users.create', compact('companyTypes','branchdetails','companydetails'));
     }
 
 
@@ -113,6 +148,12 @@ class UserController extends Controller
         $response =  json_decode($result,true);
 
         // return $DATA;
+
+        
+
+     
+
+       
 
         return redirect()->back();
     }

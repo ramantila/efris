@@ -29,7 +29,7 @@
         font-size: 17px;
         font-family: inherit;
         border: 1px solid #aaaaaa;
-        border-radius: 12px;
+        border-radius: 5px;
     }
 
     /* Mark input boxes that gets an error on validation: */
@@ -122,7 +122,7 @@
 
             @if ($tinNumber != '')
                 <form id="regForm" action="/action_page.php">
-                    <h1>Register:</h1>
+                    <h1>Registration Process:</h1>
                     <!-- One "tab" for each step in the form: -->
                     <b>
                         <div class="tab">Company Name:
@@ -148,17 +148,29 @@
                                     oninput="this.className = ''" name="email" readonly></p>
                             <p>Contact Mobile<input placeholder="Phone..." value="{{ $company->contactMobile }}"
                                     this.className='' name="phone" readonly></p>
+                                    <p>Representative Name:<input placeholder="Representative Name..." value="" this.className=''
+                                        name="phone" ></p>
+    
                             <p>Representative Contact:<input placeholder="Phone..." value="" this.className=''
                                     name="phone" ></p>
 
                         </div>
-                        <div class="tab">Birthday:
-                            <p><input placeholder="dd" value="" oninput="this.className = ''" name="dd">
+                        <div class="tab">Package type:
+                            {{-- <p><input placeholder="Package Name" value="" oninput="this.className = ''" name="dd">
                             </p>
                             <p><input placeholder="mm" value="" oninput="this.className = ''" name="nn">
-                            </p>
-                            <p><input placeholder="yyyy"value="" oninput="this.className = ''" name="yyyy">
-                            </p>
+                            </p> --}}
+                            <div class="form-group">
+                                <label for="title2">Package Name<span class="text-red">*</span></label>
+                                <select class="form-control select2" name="companyType" onselect="this.className = '' required="">
+                                    <option value="">Select Package Type</option>
+                                    @foreach($packages as  $key)
+                                        <option value="{{ $key['id'] }}">{{ $key['name'] }}</option>
+                                    @endforeach
+                                </select>
+                            </div>
+                            {{-- <p><input placeholder="yyyy"value="" oninput="this.className = ''" name="yyyy">
+                            </p> --}}
                         </div>
                         <div class="tab">Login Info:
                             <p><input placeholder="Username..." value="" oninput="this.className = ''" name="uname">
@@ -189,7 +201,7 @@
                         @csrf
                         <input type="text" placeholder="Search..." name="tinNumber"
                             class="form-control search-input"><br>
-                        <button type="submit" class="btn search-btn btn-primary" value="Search"><i
+                        <button type="submit" class="btn search-btn btn-primary" value="Search"  style="margin-left:360px"><i
                                 class="fas fa-search"></i></button>
                     </form>
                 </div>

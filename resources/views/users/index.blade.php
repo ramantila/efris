@@ -38,7 +38,7 @@
             <div class="card">
                 <div class="card-header row">
                     <div class="col col-sm-2">
-                            <a href="{{ url('efris/users/create') }}" class="btn btn-sm btn-primary btn-rounded">Add Company </a>
+                            <a href="{{ url('efris/users/create') }}" class="btn btn-sm btn-primary btn-rounded">Add User </a>
                     </div>
                     <div class="col col-sm-1">
                         <div class="card-options d-inline-block">
