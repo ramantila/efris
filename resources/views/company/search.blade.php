@@ -150,7 +150,7 @@
                                     this.className='' name="phone" readonly></p>
                                     <p>Representative Name:<input placeholder="Representative Name..." value="" this.className=''
                                         name="phone" ></p>
-    
+
                             <p>Representative Contact:<input placeholder="Phone..." value="" this.className=''
                                     name="phone" ></p>
 
@@ -172,11 +172,11 @@
                             {{-- <p><input placeholder="yyyy"value="" oninput="this.className = ''" name="yyyy">
                             </p> --}}
                         </div>
-                        <div class="tab">Login Info:
-                            <p><input placeholder="Username..." value="" oninput="this.className = ''" name="uname">
+                        <div class="tab">Other Details:
+                            <p>Tax Region<input placeholder="Tax Region..." value="" oninput="this.className = ''" name="uname">
                             </p>
-                            <p><input placeholder="Password..." value="" oninput="this.className = ''" name="pword"
-                                    type="password"></p>
+                            <p>Country<input placeholder="Country..." value="" oninput="this.className = ''" name="pword"
+                                    type="text"></p>
                         </div>
                         <div style="overflow:auto;">
                             <div style="float:right;">
