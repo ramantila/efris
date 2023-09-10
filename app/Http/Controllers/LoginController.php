@@ -22,8 +22,9 @@ class LoginController extends Controller
         );
 
         $DATA = [
-            "email" => $request->email,
-            "password" => $request->password
+            "username" => $request->username,
+            "password" => $request->password,
+            "channel" => 'WEB'
         ];
 
         $jsonData = json_encode($DATA);
@@ -47,9 +48,9 @@ class LoginController extends Controller
 
         }
 
-         $response =  json_decode($result);
+        $response =  json_decode($result);
 
-         if ($response->user->isActive == 1){
+         if ($response->user->status == "ACTIVE"){
 
              Session::put('token',$response->token);
              Session::put('refreshToken',$response->refreshToken);

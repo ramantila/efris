@@ -78,7 +78,7 @@ class PackageController extends Controller
         );
 
         $DATA = [
-            "packageName" => $request->name,
+            "name" => $request->name,
             "packageTypeId" => $request->packagesId,
             "price" => $request->price,
             "renewalPrice" => $request->renewalPrice,
@@ -106,7 +106,7 @@ class PackageController extends Controller
         catch (\Exception $e){
 
         }
-        return $DATA;
+
         $response =  json_decode($result);
 
         return redirect('efris/package/view');

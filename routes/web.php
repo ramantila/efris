@@ -74,6 +74,39 @@ Route::group(['prefix' => 'company-types'], function () {
 });
 
 
+//Route for Currencies
+Route::group(['prefix' => 'efris/currencies'], function () {
+    Route::get('view', [App\Http\Controllers\CurrenciesController::class, 'index']);
+    Route::post('store',[App\Http\Controllers\CurrenciesController::class, 'store']);
+    Route::post('update/{currency_id}',[App\Http\Controllers\CurrenciesController::class, 'update']);
+    Route::post('delete/{currency_id}',[App\Http\Controllers\CurrenciesController::class, 'delete']);
+});
+
+//Route for measurement-units
+Route::group(['prefix' => 'efris/measurement-units'], function () {
+    Route::get('view', [App\Http\Controllers\MeasurementUnitsController::class, 'index']);
+    Route::post('store',[App\Http\Controllers\MeasurementUnitsController::class, 'store']);
+    Route::post('update/{unit_id}',[App\Http\Controllers\MeasurementUnitsController::class, 'update']);
+    Route::post('delete/{unit_id}',[App\Http\Controllers\MeasurementUnitsController::class, 'delete']);
+});
+
+//Route for payment-modes
+Route::group(['prefix' => 'efris/payment-modes'], function () {
+    Route::get('view', [App\Http\Controllers\PaymentModesController::class, 'index']);
+    Route::post('store',[App\Http\Controllers\PaymentModesController::class, 'store']);
+    Route::post('update/{mode_id}',[App\Http\Controllers\PaymentModesController::class, 'update']);
+    Route::post('delete/{mode_id}',[App\Http\Controllers\PaymentModesController::class, 'delete']);
+});
+
+//Route for tax-codes
+Route::group(['prefix' => 'efris/tax-codes'], function () {
+    Route::get('view', [App\Http\Controllers\TaxCodeController::class, 'index']);
+    Route::post('store',[App\Http\Controllers\TaxCodeController::class, 'store']);
+    Route::post('update/{tax_id}',[App\Http\Controllers\TaxCodeController::class, 'update']);
+    Route::post('delete/{tax_id}',[App\Http\Controllers\TaxCodeController::class, 'delete']);
+});
+
+
 //Route for Branch
 Route::group(['prefix' => 'efris/branches'], function () {
     Route::get('view', [App\Http\Controllers\BranchController::class, 'index']);

@@ -453,6 +453,7 @@
             </div>
         </div>
     </div>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
     <!-- initiate scripts-->
     <script src="{{ asset('all.js') }}"></script>
     <!-- Stack array for including inline js or scripts -->
