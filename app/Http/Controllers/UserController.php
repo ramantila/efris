@@ -118,17 +118,17 @@ class UserController extends Controller
         $DATA = [
             "fullName" => $request->fullName,
             "email" => $request->email,
+            "username" => $request->username,
             "phoneNumber" => $request->phoneNumber,
-            "role" => $request->role,
             "password"=>$request->password,
             "confirmPassword"=>$request->confirmPassword,
-            "registrationDate" => Carbon::now(),
+            "companyId"=>$request->company_id,
 
         ];
 
         $jsonData = json_encode($DATA);
 
-        $CURL = curl_init($BASE_URL . 'auth/register');
+        $CURL = curl_init($BASE_URL . 'users/company-user');
         curl_setopt($CURL, CURLOPT_POST, true);
         curl_setopt($CURL, CURLOPT_HTTPHEADER, $HEADERS);
         curl_setopt($CURL, CURLOPT_SSL_VERIFYPEER, 0);
@@ -147,15 +147,7 @@ class UserController extends Controller
 
         $response =  json_decode($result,true);
 
-        // return $DATA;
-
-        
-
-     
-
-       
-
-        return redirect()->back();
+        return redirect('efris/users/view');
     }
 
 
@@ -217,5 +209,46 @@ class UserController extends Controller
             return redirect('');
         }
 
+    }
+
+    public function changePassword(Request $request, $user_id)
+    {
+        $BASE_URL = 'https://api.webefris.co.ug/api/v1/';
+
+        $HEADERS = array(
+            'Accept: Application/json',
+            'Content-type: Application/json',
+            'Authorization: Bearer ' . Session::get('token')
+        );
+
+        $DATA = [
+            "userId" => $user_id,
+            "password"=>$request->password,
+            "confirmPassword"=>$request->confirmPassword,
+
+        ];
+
+        $jsonData = json_encode($DATA);
+
+        $CURL = curl_init($BASE_URL . 'users/admin-password-reset');
+        curl_setopt($CURL, CURLOPT_POST, true);
+        curl_setopt($CURL, CURLOPT_HTTPHEADER, $HEADERS);
+        curl_setopt($CURL, CURLOPT_SSL_VERIFYPEER, 0);
+        curl_setopt($CURL, CURLOPT_SSL_VERIFYHOST, 0);
+        curl_setopt($CURL, CURLOPT_POSTFIELDS, $jsonData);
+        curl_setopt($CURL, CURLOPT_RETURNTRANSFER, true);
+
+        try {
+            $result = curl_exec($CURL);
+            if (curl_errno($CURL)) {
+                throw new \Exception(curl_error($CURL));
+            }
+            curl_close($CURL);
+        } catch (\Exception $e) {
+        }
+
+        $response =  json_decode($result,true);
+
+        return redirect('efris/users/view');
     }
 }

@@ -34,7 +34,7 @@ class MeasurementUnitsController extends Controller
         $units =  json_decode($result,true);
 
 
-        return view('company.measurement_units.index',compact('units'));
+        return view('app_settings.measurement_units.index',compact('units'));
     }
 
     public function store(Request $request){

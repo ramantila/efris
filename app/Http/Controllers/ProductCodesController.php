@@ -5,16 +5,17 @@ use Illuminate\Support\Facades\Session;
 
 use Illuminate\Http\Request;
 
-class TaxCodeController extends Controller
+class ProductCodesController extends Controller
 {
-    public function index(){
+    public function categorySegment(){
+    
         $BASE_URL = 'https://api.webefris.co.ug/api/v1/';
 
         $HEADERS = array(
             'Authorization: Bearer '.Session::get('token')
         );
 
-        $URL = $BASE_URL.'tax-codes';
+        $URL = $BASE_URL.'product-codes/product-segments';
         $CURL =  curl_init();
         curl_setopt($CURL, CURLOPT_URL, $URL);
         curl_setopt($CURL, CURLOPT_HTTPHEADER, $HEADERS);
@@ -31,114 +32,20 @@ class TaxCodeController extends Controller
 
         }
 
-        $taxes =  json_decode($result,true);
+        $cats = json_decode($result,true);
 
-
-        return view('app_settings.tax_codes.index',compact('taxes'));
+        return view('product_codes.product_segments',compact('cats'));
     }
 
-    public function store(Request $request){
-
-        $BASE_URL = 'https://api.webefris.co.ug/api/v1/';
-
-        $HEADERS = array(
-            'Accept: Application/json',
-            'Content-type: Application/json',
-            'Authorization: Bearer '.Session::get('token')
-        );
-
-        $DATA = [
-            "taxIndex" => $request->taxIndex,
-            "taxCode" => $request->taxCode,
-            "taxName" => $request->taxName,
-            "taxRate" => $request->taxRate
-        ];
-
-        $jsonData = json_encode($DATA);
-
-        $CURL = curl_init($BASE_URL.'tax-codes');
-        curl_setopt($CURL, CURLOPT_POST, true);
-        curl_setopt($CURL, CURLOPT_HTTPHEADER, $HEADERS);
-        curl_setopt($CURL, CURLOPT_SSL_VERIFYPEER, 0);
-        curl_setopt($CURL, CURLOPT_SSL_VERIFYHOST, 0);
-        curl_setopt($CURL, CURLOPT_POSTFIELDS, $jsonData);
-        curl_setopt($CURL, CURLOPT_RETURNTRANSFER, true);
-
-        try {
-            $result = curl_exec($CURL);
-            if (curl_errno($CURL)){
-                throw new \Exception(curl_error($CURL));
-            }
-            curl_close($CURL);
-        }
-        catch (\Exception $e){
-
-        }
-
-        $response =  json_decode($result);
-
-        return redirect()->back();
-
-    }
-
-    public function update(Request $request, $tax_id){
-
-        $BASE_URL = 'https://api.webefris.co.ug/api/v1/';
-
-        $HEADERS = [
-            'Accept: application/json',
-            'Content-Type: application/json',
-            'Authorization: Bearer ' . Session::get('token'),
-        ];
-    
-        $DATA = [
-            "id" => $tax_id,
-            "taxIndex" => $request->taxIndex,
-            "taxCode" => $request->taxCode,
-            "taxName" => $request->taxName,
-            "taxRate" => $request->taxRate
-        ];
-    
-        $jsonData = json_encode($DATA);
-    
-        $URL = $BASE_URL . 'tax-codes';
-        $CURL = curl_init();
-    
-        curl_setopt($CURL, CURLOPT_CUSTOMREQUEST, 'PUT');
-        curl_setopt($CURL, CURLOPT_URL, $URL);
-        curl_setopt($CURL, CURLOPT_HTTPHEADER, $HEADERS);
-        curl_setopt($CURL, CURLOPT_POSTFIELDS, $jsonData);
-        curl_setopt($CURL, CURLOPT_RETURNTRANSFER, true);
-    
-
-        try {
-            $result = curl_exec($CURL);
-            if (curl_errno($CURL)){
-                throw new \Exception(curl_error($CURL));
-            }
-            curl_close($CURL);
-        }
-        catch (\Exception $e){
-
-        }
-
-        $response =  json_decode($result);
-
-        return redirect()->back();
-
-    }
-
-    public function delete($tax_id){
-
+    public function getcategorySegment(){
         $BASE_URL = 'https://api.webefris.co.ug/api/v1/';
 
         $HEADERS = array(
             'Authorization: Bearer '.Session::get('token')
         );
 
-        $URL = $BASE_URL.'tax-codes/'.$tax_id;
+        $URL = $BASE_URL.'product-codes/product-segments';
         $CURL =  curl_init();
-        curl_setopt($CURL, CURLOPT_CUSTOMREQUEST, 'DELETE');
         curl_setopt($CURL, CURLOPT_URL, $URL);
         curl_setopt($CURL, CURLOPT_HTTPHEADER, $HEADERS);
         curl_setopt($CURL, CURLOPT_RETURNTRANSFER, true);
@@ -154,9 +61,98 @@ class TaxCodeController extends Controller
 
         }
 
-        $currencies =  json_decode($result,true);
+        return json_decode($result,true);
+    }
 
-        return redirect()->back();
+    public function segmentFamily(){
 
+        $BASE_URL = 'https://api.webefris.co.ug/api/v1/';
+
+        $HEADERS = array(
+            'Authorization: Bearer '.Session::get('token')
+        );
+
+        $URL = $BASE_URL.'product-codes/product-families/1';
+        // $URL = $BASE_URL.'product-codes/product-families/'.$cat_id;
+        $CURL =  curl_init();
+        curl_setopt($CURL, CURLOPT_URL, $URL);
+        curl_setopt($CURL, CURLOPT_HTTPHEADER, $HEADERS);
+        curl_setopt($CURL, CURLOPT_RETURNTRANSFER, true);
+
+        try {
+            $result = curl_exec($CURL);
+            if (curl_errno($CURL)){
+                throw new \Exception(curl_error($CURL));
+            }
+            curl_close($CURL);
+        }
+        catch (\Exception $e){
+
+        }
+
+        $families = json_decode($result,true);
+
+        return view('product_codes.product_family',compact('families'));
+
+    }
+
+    public function segmentClass(){
+        $BASE_URL = 'https://api.webefris.co.ug/api/v1/';
+
+        $HEADERS = array(
+            'Authorization: Bearer '.Session::get('token')
+        );
+
+        $URL = $BASE_URL.'product-codes/product-classes/1';
+        $CURL =  curl_init();
+        curl_setopt($CURL, CURLOPT_URL, $URL);
+        curl_setopt($CURL, CURLOPT_HTTPHEADER, $HEADERS);
+        curl_setopt($CURL, CURLOPT_RETURNTRANSFER, true);
+
+        try {
+            $result = curl_exec($CURL);
+            if (curl_errno($CURL)){
+                throw new \Exception(curl_error($CURL));
+            }
+            curl_close($CURL);
+        }
+        catch (\Exception $e){
+
+        }
+
+        $classes =  json_decode($result,true);
+
+
+        return view('product_codes.product_class',compact('classes'));
+    }
+
+    public function segmentCodes(){
+        $BASE_URL = 'https://api.webefris.co.ug/api/v1/';
+
+        $HEADERS = array(
+            'Authorization: Bearer '.Session::get('token')
+        );
+
+        $URL = $BASE_URL.'product-codes/product-segment-codes/1';
+        $CURL =  curl_init();
+        curl_setopt($CURL, CURLOPT_URL, $URL);
+        curl_setopt($CURL, CURLOPT_HTTPHEADER, $HEADERS);
+        curl_setopt($CURL, CURLOPT_RETURNTRANSFER, true);
+
+        try {
+            $result = curl_exec($CURL);
+            if (curl_errno($CURL)){
+                throw new \Exception(curl_error($CURL));
+            }
+            curl_close($CURL);
+        }
+        catch (\Exception $e){
+
+        }
+
+        $codes =  json_decode($result,true);
+
+
+        return view('product_codes.product_codes',compact('codes'));
     }
 }

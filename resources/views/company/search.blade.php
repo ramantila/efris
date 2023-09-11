@@ -113,29 +113,95 @@
         </div>
     </div>
 
-    <div class="row">
-        <!-- start message area-->
-        <div class="col-md-12">
-        </div> <!-- end message area-->
-        <div class="col-md-12">
+    <div class="card-body">
+
+        <div class="dt-responsive">
+            @if ($tinNumber != '')
+                <form id="regForm" action="/action_page.php">
+                    <h1>Registration Process:</h1>
+                    <!-- One "tab" for each step in the form: -->
+                    <b>
+                        <div class="tab">Company Name:
+                            <p><input placeholder="Company name..." value="{{ $company->businessName }}"
+                                    oninput="this.className = ''" name="fname" readonly></p>
+                            <p>Address:<input placeholder="Address..." value="{{ $company->address }}"
+                                    oninput="this.className = ''" name="lname" readonly></p>
+                            <p>Legal Name:<input placeholder="Legal Name" value="{{ $company->legalName }}"
+                                    oninput="this.className = ''" name="fname" readonly></p>
+                            <p>Tin:<input placeholder="Tin..." value="{{ $company->tin }}" oninput="this.className = ''"
+                                    name="lname" readonly>
+                            </p>
+                            <p>Tax Payer status:<input placeholder="Company status" value="{{ $company->taxpayerStatus }}"
+                                    oninput="this.className = ''" name="fname" readonly></p>
+                            <p>Tax Payer status Code:<input placeholder="Status Code"
+                                    value="{{ $company->taxpayerStatusCode }}" oninput="this.className = ''" name="lname"
+                                    readonly></p>
+
+
+                        </div>
+                        <div class="tab">Contact Info:
+                            <p>Contact Person:<input placeholder="Contact person..." value="{{ $company->contactNumber }}"
+                                    oninput="this.className = ''" name="email" readonly></p>
+                            <p>Contact Mobile<input placeholder="Phone..." value="{{ $company->contactMobile }}"
+                                    this.className='' name="phone" readonly></p>
+                            <p>Representative Name:<input placeholder="Representative Name..." value=""
+                                    this.className='' name="phone"></p>
+
+                            <p>Representative Contact:<input placeholder="Phone..." value="" this.className=''
+                                    name="phone"></p>
+
+                        </div>
+                        <div class="tab">Package type:
+                            {{-- <p><input placeholder="Package Name" value="" oninput="this.className = ''" name="dd">
+                            </p>
+                            <p><input placeholder="mm" value="" oninput="this.className = ''" name="nn">
+                            </p> --}}
+                            <div class="form-group">
+                                <label for="title2">Package Name<span class="text-red">*</span></label>
+                                <select class="form-control select2" name="companyType"
+                                    onselect="this.className = '' required="">
+                                    <option value="">Select Package Type</option>
+                                    @foreach ($packages as $key)
+                                        <option value="{{ $key['id'] }}">{{ $key['name'] }}</option>
+                                    @endforeach
+                                </select>
+                            </div>
+                            {{-- <p><input placeholder="yyyy"value="" oninput="this.className = ''" name="yyyy">
+                            </p> --}}
+                        </div>
+                        <div class="tab">Other Details:
+                            <p>Tax Region<input placeholder="Tax Region..." value="" oninput="this.className = ''"
+                                    name="uname">
+                            </p>
+                            <p>Country<input placeholder="Country..." value="" oninput="this.className = ''"
+                                    name="pword" type="text"></p>
+                        </div>
+                        <div style="overflow:auto;">
+                            <div style="float:right;">
+                                <button type="button" id="prevBtn" style="border-radius: 12px;"
+                                    onclick="nextPrev(-1)">Previous</button>
+                                <button type="button" id="nextBtn" onclick="nextPrev(1)"
+                                    style="border-radius: 12px">Next</button>
+                            </div>
+                        </div>
+                        <!-- Circles which indicates the steps of the form: -->
+                        <div style="text-align:center;margin-top:40px;">
+                            <span class="step"></span>
+                            <span class="step"></span>
+                            <span class="step"></span>
+                            <span class="step"></span>
+                        </div>
+                </form>
+            @else
             <div class="card">
                 <div class="card-body">
-                    {{-- <div class="app-search-box col-3">
-                        Search Tin here
-                        <form class="app-search-form" action="{{ url('companies/data') }}" method="POST">
-                            @csrf
-                            <input type="text" placeholder="Search..." name="tinNumber"
-                                class="form-control search-input"><br>
-                            <button type="submit" class="btn search-btn btn-primary" value="Search"
-                                style="margin-left:360px"><i class="fas fa-search"></i></button>
-                        </form>
-                    </div> --}}
                     <div class="row">
                         <div class="col-3">
                             Search Tin here
                             <form class="app-search-form" action="{{ url('companies/data') }}" method="POST">
+                                @csrf
                                 <div class="input-group mb-3">
-                                    <input type="text" class="form-control" placeholder="Recipient's username"
+                                    <input type="text"  name="tinNumber" class="form-control" placeholder="Search..."
                                         aria-label="Recipient's username" aria-describedby="button-addon2">
                                     <div class="input-group-append">
                                         <button class="btn search-btn btn-primary" type="submit" id="button-addon2"><i
@@ -147,9 +213,6 @@
                         <div class="col-3"></div>
                         <div class="col-3"></div>
                     </div>
-
-                    <div class="dt-responsive">
-
                         <table id="data_table" class="table">
                             <thead>
                                 <tr>
@@ -172,12 +235,11 @@
                             <tbody>
                             </tbody>
                         </table>
-                    </div>
                 </div>
             </div>
+            @endif
         </div>
     </div>
-
     <script>
         var currentTab = 0; // Current tab is set to be the first tab (0)
         showTab(currentTab); // Display the current tab

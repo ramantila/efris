@@ -34,7 +34,7 @@ class CurrenciesController extends Controller
         $currencies =  json_decode($result,true);
 
 
-        return view('company.currency.index',compact('currencies'));
+        return view('app_settings.currency.index',compact('currencies'));
     }
 
     public function store(Request $request){

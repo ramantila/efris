@@ -72,7 +72,7 @@
                                         <th style="width: 60px;">No of Users</th>
                                         <th style="width: 60px;">No of Branches</th>
                                         <th style="width: 63px;">Created By</th>
-                                        <th style="width: 63px;">Action</th>
+                                        <th style="width: 63px;" class="text-center">Action</th>
                                     </tr>
                                     </thead>
                                     <tbody>
@@ -86,21 +86,26 @@
                                             <td>{{ $key['numberOfUsers'] }}</td>
                                             <td>{{ $key['numberOfBranches'] }}</td>
                                             <td>{{ $key['createdByName'] }}</td>
-                                            <td>
-                                                <a class="add-btn"
-                                                   href=""><i
-                                                            class="fas fa-eye"></i> <span
-                                                            class="remove-mobile"><span></span></span></a>
-
-                                                <a class="add-btn"
-                                                   href="{{ url('efris/package/edit/'.$key['id']) }}"><i
-                                                            class="fas fa-pencil-alt"></i> <span
-                                                            class="remove-mobile"><span></span></span></a>
-
-                                                <a class="add-btn"
-                                                   href="https://product.geniusocean.com/kingcommerce/kingcommerce/admin/products/types"><i
-                                                            class="fas fa-trash"></i> <span
-                                                            class="remove-mobile"><span></span></span></a>
+                                            <td class="text-center">
+                                                <div class="dropdown d-inline-block">
+                                                    <a class="nav-link dropdown-toggle" href="#" id="moreDropdown"
+                                                        role="button" data-toggle="dropdown" aria-haspopup="true"
+                                                        aria-expanded="false">
+                                                        <i class="ik ik-more-vertical"></i>
+                                                    </a>
+                                                    <div class="dropdown-menu dropdown-menu-right">
+    
+    
+                                                        <a class="dropdown-item" href="#accountEdit" data-toggle="modal"
+                                                            data-target="#setedit{{ $key['id'] }}">
+                                                            <i class="ik ik-edit"></i> Edit </a>
+    
+                                                        <a class="dropdown-item" href="#accountEdit" data-toggle="modal"
+                                                            data-target="#delete{{ $key['id'] }}">
+                                                            <i class="ik ik-trash"></i> Delete </a>
+    
+                                                    </div>
+                                                </div>
                                             </td>
                                         </tr>
                                         @endforeach

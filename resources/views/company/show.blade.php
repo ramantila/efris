@@ -3,7 +3,6 @@
     Company
 @endsection
 @section('content')
-
     <div class="page-header">
         <div class="row align-items-end">
             <div class="col-lg-8">
@@ -37,7 +36,8 @@
             <div class="card">
                 <div class="card-header row">
                     <div class="col col-sm-2">
-                            <a href="{{ url('companies/searchview') }}" class="btn btn-sm btn-primary btn-rounded">Add Company </a>
+                        <a href="{{ url('companies/searchview') }}" class="btn btn-sm btn-primary btn-rounded">Add Company
+                        </a>
                     </div>
                     <div class="col col-sm-1">
                         <div class="card-options d-inline-block">
@@ -85,11 +85,11 @@
                                     {{-- <th style="width: 63px;">Created</th> --}}
                                     <th style="width: 63px;">Action</th>
                                 </tr>
-                                </thead>
-                                <tbody>
-                                @foreach($company as $index => $com)
+                            </thead>
+                            <tbody>
+                                @foreach ($company as $index => $com)
                                     <tr>
-                                        <td>{{ $index+1 }}</td>
+                                        <td>{{ $index + 1 }}</td>
                                         <td>{{ $com['companyName'] }}</td>
                                         <td>{{ $com['companyType'] }}</td>
                                         <td>{{ $com['companyTypeName'] }}</td>
@@ -109,24 +109,33 @@
                                         {{-- <td>{{ $com['verificationStage'] }}</td> --}}
                                         {{-- <td>{{ $com['createdAt'] }}</td> --}}
 
-                                        <td>
-                                            <a class="add-btn"
-                                            href="{{ url('companies/details/'.$com['id']) }}"><i
-                                                     class="fas fa-eye"></i> <span
-                                                     class="remove-mobile"><span></span></span></a>
+                                        <td class="text-center">
+                                            <div class="dropdown d-inline-block">
+                                                <a class="nav-link dropdown-toggle" href="#" id="moreDropdown"
+                                                    role="button" data-toggle="dropdown" aria-haspopup="true"
+                                                    aria-expanded="false">
+                                                    <i class="ik ik-more-vertical"></i>
+                                                </a>
+                                                <div class="dropdown-menu dropdown-menu-right">
 
-                                         <a class="add-btn"
-                                            href="{{ url('companies/edit/'.$com['id']) }}"><i
-                                                     class="fas fa-pencil-alt"></i> <span
-                                                     class="remove-mobile"><span></span></span></a>
 
-                                         <a class="add-btn"
-                                            href="https://product.geniusocean.com/kingcommerce/kingcommerce/admin/products/types"><i
-                                                     class="fas fa-trash"></i> <span
-                                                     class="remove-mobile"><span></span></span></a>
+                                                    <a class="dropdown-item"
+                                                    href="{{ url('companies/details/' . $com['id']) }}"><i
+                                                            class="ik ik-edit"></i> View </a>
 
+                                                    <a class="dropdown-item"
+                                                    href="{{ url('companies/edit/' . $com['id']) }}"><i
+                                                            class="ik ik-edit"></i> Edit </a>
+
+                                                    <a class="dropdown-item" href="#accountEdit" data-toggle="modal"
+                                                        data-target="#delete{{ $com['id'] }}">
+                                                        <i class="ik ik-trash"></i> Delete </a>
+
+                                                </div>
+                                            </div>
                                         </td>
-                                </tr>
+
+                                    </tr>
                                 @endforeach
                             </tbody>
 
@@ -137,4 +146,3 @@
         </div>
     </div>
 @endsection
-

@@ -34,7 +34,7 @@ class PaymentModesController extends Controller
         $modes =  json_decode($result,true);
 
 
-        return view('company.payment_modes.index',compact('modes'));
+        return view('app_settings.payment_modes.index',compact('modes'));
     }
 
     public function store(Request $request){

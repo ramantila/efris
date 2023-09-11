@@ -78,9 +78,9 @@
 
                                     <div class="col-md-6">
                                         <div class="form-group">
-                                            <label for="title">Role<span class="text-red">*</span></label>
-                                            <input id="title" type="text" class="form-control" name="role"
-                                                  placeholder="Role" required="">
+                                            <label for="title">Username<span class="text-red">*</span></label>
+                                            <input id="title" type="text" class="form-control" name="username"
+                                                 placeholder="Username" required="">
                                             <div class="help-block with-errors"></div>
                                         </div>
                                     </div>
@@ -92,7 +92,7 @@
                                     <div class="col-md-6 mr-">
                                         <div class="form-group">
                                             <label for="title">Password<span class="text-red">*</span></label>
-                                            <input id="title" type="text" class="form-control" name="password"
+                                            <input id="title" type="password" class="form-control" name="password"
                                                   placeholder="password" required="">
                                             <div class="help-block with-errors"></div>
                                         </div>
@@ -101,7 +101,7 @@
                                     <div class="col-md-6">
                                         <div class="form-group">
                                             <label for="title">Confirm Password<span class="text-red">*</span></label>
-                                            <input id="title" type="text" class="form-control" name="confirmPassword"
+                                            <input id="title" type="password" class="form-control" name="confirmPassword"
                                                   placeholder="confirm" required="">
                                             <div class="help-block with-errors"></div>
                                         </div>
@@ -116,7 +116,7 @@
                                     <div class="col-md-12 mr-">
                                         <div class="form-group">
                                             <label for="title2">Company<span class="text-red">*</span></label>
-                                            <select class="form-control select2" name="companyName" onselect="this.className = '' required="">
+                                            <select class="form-control select2" name="company_id" onselect="this.className = '' required="">
                                                 <option value="">Select Comapny Name</option>
                                                 @foreach($companydetails as  $key)
                                                     <option value="{{ $key['id'] }}">{{ $key['companyName'] }}</option>

@@ -21,18 +21,6 @@
                 <a href="{{ url('efris/branches/view') }}"
                     class="menu-item @if (Request::is()) active @endif">Branch</a>
 
-                <a href="{{ url('efris/currencies/view') }}"
-                    class="menu-item @if (Request::is()) active @endif">Currencies</a>
-
-                <a href="{{ url('efris/measurement-units/view') }}"
-                    class="menu-item @if (Request::is()) active @endif">Measurement Units</a>
-
-                <a href="{{ url('efris/payment-modes/view') }}"
-                    class="menu-item @if (Request::is()) active @endif">Payment Modes</a>
-
-                <a href="{{ url('efris/tax-codes/view') }}"
-                    class="menu-item @if (Request::is()) active @endif">Tax Code</a>
-
             </div>
 
         </div>
@@ -40,8 +28,7 @@
         <div class=" @if (Request::is('reports/*')) active open @endif nav-item  has-sub">
             <a href="#"><i class="ik ik-package"></i><span>packages</span> </a>
             <div class="submenu-content">
-                <a href="{{ url('efris/package/view') }}"
-                    class="menu-item @if (Request::is('')) active @endif">Packages</a>
+
 
                 <a href="{{ url('packages-type/view') }}"
                     class="menu-item @if (Request::is()) active @endif">Package type </a>
@@ -57,6 +44,71 @@
                 <a href="{{ url('efris/users/view') }}"
                     class="menu-item @if (Request::is('')) active @endif">Users</a>
 
+
+            </div>
+
+        </div>
+
+        {{-- <div class=" @if (Request::is('reports/*')) active open @endif nav-item  has-sub">
+            <a href="#"><i class="ik ik-clipboard"></i><span>Product Codes</span> </a>
+            <div class="submenu-content">
+
+                <a href="{{ url('efris/currencies/view') }}"
+                    class="menu-item @if (Request::is()) active @endif">Currencies</a>
+
+                <a href="{{ url('efris/measurement-units/view') }}"
+                    class="menu-item @if (Request::is()) active @endif">Measurement Units</a>
+
+                <a href="{{ url('efris/payment-modes/view') }}"
+                    class="menu-item @if (Request::is()) active @endif">Payment Modes</a>
+
+                <a href="{{ url('efris/tax-codes/view') }}"
+                    class="menu-item @if (Request::is()) active @endif">Tax Code</a>
+
+                <a href="{{ url('efris/tax-codes/view') }}"
+                    class="menu-item @if (Request::is()) active @endif">Tax Code</a>
+
+                <a href="{{ url('efris/package/view') }}"
+                    class="menu-item @if (Request::is('')) active @endif">Packages</a>
+
+            </div>
+
+        </div> --}}
+
+        <div class=" @if (Request::is('reports/*')) active open @endif nav-item  has-sub">
+            <a href="#"><i class="ik ik-clipboard"></i><span>App Settings</span> </a>
+            <div class="submenu-content">
+
+                <a href="{{ url('efris/currencies/view') }}"
+                    class="menu-item @if (Request::is()) active @endif">Currencies</a>
+
+                <a href="{{ url('efris/measurement-units/view') }}"
+                    class="menu-item @if (Request::is()) active @endif">Measurement Units</a>
+
+                <a href="{{ url('efris/payment-modes/view') }}"
+                    class="menu-item @if (Request::is()) active @endif">Payment Modes</a>
+
+                <a href="{{ url('efris/tax-codes/view') }}"
+                    class="menu-item @if (Request::is()) active @endif">Tax Code</a>
+
+                <a href="{{ url('efris/tax-codes/view') }}"
+                    class="menu-item @if (Request::is()) active @endif">Tax Code</a>
+
+                <a href="{{ url('efris/package/view') }}"
+                    class="menu-item @if (Request::is('')) active @endif">Packages</a>
+
+                <div class="nav-item  has-sub">
+                    <a href="javascript:void(0)" class="menu-item">Product Codes</a>
+                    <div class="submenu-content">
+                        <a href="{{ url('efris/product/category-segment') }}" class="menu-item">Product Category Segment</a>
+
+                        <a href="{{ url('efris/product/segment-family') }}" class="menu-item">Product Segment Family</a>
+
+                        <a href="{{ url('efris/product/segment-class') }}" class="menu-item">Product Segment Class</a>
+
+                        <a href="{{ url('efris/product/segment-codes') }}" class="menu-item">Product Segment Codes</a>
+                    </div>
+                </div>
 
             </div>
 
