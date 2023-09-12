@@ -1,4 +1,4 @@
-@extends('layouts.master')\
+@extends('layouts.master')
 
 <script
 src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.9.4/Chart.js">
@@ -16,7 +16,7 @@ src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.9.4/Chart.js">
                     <div class="card-block">
                         <div class="row align-items-center">
                             <div class="col-8">
-                                <h4 class="mb-0">2,563</h4>
+                                <h4 class="mb-0">1<h4>
                                 <p class="mb-0">Companies</p>
                             </div>
                             <div class="col-4 text-right">
@@ -32,7 +32,7 @@ src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.9.4/Chart.js">
                     <div class="card-block">
                         <div class="row align-items-center">
                             <div class="col-8">
-                                <h4 class="mb-0">78</h4>
+                                <h4 class="mb-0">0</h4>
                                 <p class="mb-0">Branches</p>
                             </div>
                             <div class="col-4 text-right">
@@ -48,7 +48,7 @@ src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.9.4/Chart.js">
                     <div class="card-block">
                         <div class="row align-items-center">
                             <div class="col-8">
-                                <h4 class="mb-0">56</h4>
+                                <h4 class="mb-0">0</h4>
                                 <p class="mb-0">Users</p>
                             </div>
                             <div class="col-4 text-right">
@@ -64,7 +64,7 @@ src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.9.4/Chart.js">
                     <div class="card-block">
                         <div class="row align-items-center">
                             <div class="col-8">
-                                <h4 class="mb-0">200
+                                <h4 class="mb-0">0
                                 </h4>
                                 <p class="mb-0">Total Sales Receipts</p>
                             </div>
@@ -243,7 +243,7 @@ new Chart("myChart", {
   },
   options: {...}
 });
-        
+
     </script>
 
 @endsection

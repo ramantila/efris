@@ -430,7 +430,7 @@ class CompanyController extends Controller
     }
 
     public function storeCurrrency(Request $request, $company_id){
-       
+
         $BASE_URL = 'https://api.webefris.co.ug/api/v1/';
 
         $HEADERS = array(
