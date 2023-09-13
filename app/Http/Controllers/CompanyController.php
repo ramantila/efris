@@ -167,11 +167,11 @@ class CompanyController extends Controller
             'Authorization: Bearer ' . Session::get('token')
         );
 
-             $DATA = [
+        $DATA = [
             "companyType" => $request->companyType,
             "companyTypeName" => $request->companyTypeName,
-            "tin" => $request->tinNumber,
-            "vrn" => $request->tinNumber,
+            "tin" => $request->tin,
+            "vrn" => $request->tin,
             "taxOffice" => $request->taxOffice,
             "contactPersonName" => $request->contactPersonName,
             "contactPersonEmail" => $request->emailAddress,
@@ -182,16 +182,16 @@ class CompanyController extends Controller
             // "verificationStage" => $request->verificationStage,
             // "aesKeyExpiration" => $request->aesKeyExpiration,
             "createdAt" => Carbon::now(),
-            "businessName" => $request->companyName,
+            "businessName" => $request->businessName,
             "emailAddress" => $request->emailAddress,
             "contactFullName" => $request->contactFullName, 
-            "contactPersonIdType" => $request->companyType,
+            "contactPersonIdType" => $request->contactPersonIdType,
+            "contactPersonIdNumber" => $request->contactPersonIdNumber,
             "legalName" => $request->legalName,
             "phoneNumber" =>  $request->contactPersonPhone,
             "address" => $request->address,
-            "contactPersonIdNumber" => 
             "contactPersonPhoneNumber" => $request->contactPersonPhone,
-
+        
         ];
 
          $jsonData = json_encode($DATA);
@@ -213,7 +213,7 @@ class CompanyController extends Controller
         } catch (\Exception $e) {
         }
 
-        return $response =  json_decode($result);
+        $response =  json_decode($result);
 
         // return $DATA;
 

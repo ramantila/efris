@@ -126,14 +126,12 @@
                             <p><input placeholder="Company name..." value="{{ $company->businessName }}"
                                     oninput="this.className = ''" name="businessName" readonly></p>
 
-                            <input placeholder="Company name..." value="{{ $company->companyType }}"
-                                oninput="this.className = ''" name="companyType" hidden>
-
                             <p>Address:<input placeholder="Address..." value="{{ $company->address }}"
-                                    oninput="this.className = ''" name="address" readonly></p>
+                                    oninput="this.className = ''" name="address"></p>
 
-                            <p>Contact Person Id Number:<input placeholder="Contact Person Id Number" 
-                                    oninput="this.className = ''" name="contactPersonIdNumber" readonly></p>
+                            <p>Company Type Name:<input placeholder="Company Type Name" oninput="this.className = ''"
+                                    name="companyTypeName"></p>
+
 
                             <p>Legal Name:<input placeholder="Legal Name" value="{{ $company->legalName }}"
                                     oninput="this.className = ''" name="legalName" readonly></p>
@@ -155,14 +153,24 @@
                                     oninput="this.className = ''" name="contactNumber" readonly></p>
                             <p>Contact Mobile<input placeholder="Phone..." value="{{ $company->contactMobile }}"
                                     this.className='' name="contactMobile" readonly></p>
+
+                            <p>Identity:<input placeholder="Contact Person Id Number" oninput="this.className = ''"
+                                    name="contactPersonIdNumber"></p>
+
+                            <p>Identity Type:<input placeholder="Contact Person Id Type" oninput="this.className = ''"
+                                    name="contactPersonIdType"></p>
+
                             <p>Representative Name:<input placeholder="Representative Name..." value=""
                                     this.className='' name="contactFullName"></p>
+
+                            <p>Contact Person Name:<input placeholder="Contact Person Name" value=""
+                                    this.className='' name="contactPersonName"></p>
 
                             <p>Email Address:<input placeholder="Email Address" value="" type="email"
                                     this.className='' name="emailAddress"></p>
 
                             <p>Representative Contact:<input placeholder="Phone..." value="" this.className=''
-                                    name="phone"></p>
+                                    name="contactPersonPhone"></p>
 
                         </div>
                         <div class="tab">Package type:
@@ -185,7 +193,7 @@
                         </div>
                         <div class="tab">Other Details:
                             <p>Tax Region<input placeholder="Tax Region..." value="" oninput="this.className = ''"
-                                    name="uname">
+                                    name="taxOffice">
                             </p>
                             <p>Country<input placeholder="Country..." value="" oninput="this.className = ''"
                                     name="pword" type="text"></p>
