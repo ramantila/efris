@@ -122,18 +122,26 @@
                     <h1>Registration Process:</h1>
                     <!-- One "tab" for each step in the form: -->
                     <b>
-                        <div class="tab">Company Name:
+                        <div class="tab">Company / Business Name:
                             <p><input placeholder="Company name..." value="{{ $company->businessName }}"
-                                    oninput="this.className = ''" name="companyName" readonly></p>
+                                    oninput="this.className = ''" name="businessName" readonly></p>
+
                             <p>Address:<input placeholder="Address..." value="{{ $company->address }}"
-                                    oninput="this.className = ''" name="taxOffice" readonly></p>
+                                    oninput="this.className = ''" name="address"></p>
+
+                            <p>Company Type Name:<input placeholder="Company Type Name" oninput="this.className = ''"
+                                    name="companyTypeName"></p>
+
+
                             <p>Legal Name:<input placeholder="Legal Name" value="{{ $company->legalName }}"
-                                    oninput="this.className = ''" name="fname" readonly></p>
+                                    oninput="this.className = ''" name="legalName" readonly></p>
+
                             <p>Tin:<input placeholder="Tin..." value="{{ $company->tin }}" oninput="this.className = ''"
-                                    name="tinNumber" readonly>
+                                    name="tin" readonly>
                             </p>
                             <p>Tax Payer status:<input placeholder="Company status" value="{{ $company->taxpayerStatus }}"
-                                    oninput="this.className = ''" name="fname" readonly></p>
+                                    oninput="this.className = ''" name="taxstatus" readonly></p>
+
                             <p>Tax Payer status Code:<input placeholder="Status Code"
                                     value="{{ $company->taxpayerStatusCode }}" oninput="this.className = ''" name="lname"
                                     readonly></p>
@@ -142,14 +150,27 @@
                         </div>
                         <div class="tab">Contact Info:
                             <p>Contact Person:<input placeholder="Contact person..." value="{{ $company->contactNumber }}"
-                                    oninput="this.className = ''" name="contactPersonPhone" readonly></p>
+                                    oninput="this.className = ''" name="contactNumber" readonly></p>
                             <p>Contact Mobile<input placeholder="Phone..." value="{{ $company->contactMobile }}"
-                                    this.className='' name="phone" readonly></p>
+                                    this.className='' name="contactMobile" readonly></p>
+
+                            <p>Identity:<input placeholder="Contact Person Id Number" oninput="this.className = ''"
+                                    name="contactPersonIdNumber"></p>
+
+                            <p>Identity Type:<input placeholder="Contact Person Id Type" oninput="this.className = ''"
+                                    name="contactPersonIdType"></p>
+
                             <p>Representative Name:<input placeholder="Representative Name..." value=""
+                                    this.className='' name="contactFullName"></p>
+
+                            <p>Contact Person Name:<input placeholder="Contact Person Name" value=""
                                     this.className='' name="contactPersonName"></p>
 
+                            <p>Email Address:<input placeholder="Email Address" value="" type="email"
+                                    this.className='' name="emailAddress"></p>
+
                             <p>Representative Contact:<input placeholder="Phone..." value="" this.className=''
-                                    name="phone"></p>
+                                    name="contactPersonPhone"></p>
 
                         </div>
                         <div class="tab">Package type:
@@ -172,7 +193,7 @@
                         </div>
                         <div class="tab">Other Details:
                             <p>Tax Region<input placeholder="Tax Region..." value="" oninput="this.className = ''"
-                                    name="uname">
+                                    name="taxOffice">
                             </p>
                             <p>Country<input placeholder="Country..." value="" oninput="this.className = ''"
                                     name="pword" type="text"></p>
@@ -194,26 +215,27 @@
                         </div>
                 </form>
             @else
-            <div class="card">
-                <div class="card-body">
-                    <div class="row">
-                        <div class="col-3">
-                            Search Tin here
-                            <form class="app-search-form" action="{{ url('companies/data') }}" method="POST">
-                                @csrf
-                                <div class="input-group mb-3">
-                                    <input type="text"  name="tinNumber" class="form-control" placeholder="Search..."
-                                        aria-label="Recipient's username" aria-describedby="button-addon2">
-                                    <div class="input-group-append">
-                                        <button class="btn search-btn btn-primary" type="submit" id="button-addon2"><i
-                                                class="fas fa-search"></i></button>
+                <div class="card">
+                    <div class="card-body">
+                        <div class="row">
+                            <div class="col-3">
+                                Search Tin here
+                                <form class="app-search-form" action="{{ url('companies/data') }}" method="POST">
+                                    @csrf
+                                    <div class="input-group mb-3">
+                                        <input type="text" name="tinNumber" class="form-control"
+                                            placeholder="Search..." aria-label="Recipient's username"
+                                            aria-describedby="button-addon2">
+                                        <div class="input-group-append">
+                                            <button class="btn search-btn btn-primary" type="submit"
+                                                id="button-addon2"><i class="fas fa-search"></i></button>
+                                        </div>
                                     </div>
-                                </div>
-                            </form>
+                                </form>
+                            </div>
+                            <div class="col-3"></div>
+                            <div class="col-3"></div>
                         </div>
-                        <div class="col-3"></div>
-                        <div class="col-3"></div>
-                    </div>
                         <table id="data_table" class="table">
                             <thead>
                                 <tr>
@@ -236,8 +258,8 @@
                             <tbody>
                             </tbody>
                         </table>
+                    </div>
                 </div>
-            </div>
             @endif
         </div>
     </div>

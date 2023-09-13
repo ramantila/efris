@@ -167,16 +167,14 @@ class CompanyController extends Controller
             'Authorization: Bearer ' . Session::get('token')
         );
 
-             $DATA = [
-            "companyName" => $request->companyName,
+        $DATA = [
             "companyType" => $request->companyType,
             "companyTypeName" => $request->companyTypeName,
-            "tinNumber" => $request->tinNumber,
-            "vrn" => $request->vrn,
+            "tin" => $request->tin,
+            "vrn" => $request->tin,
             "taxOffice" => $request->taxOffice,
             "contactPersonName" => $request->contactPersonName,
-            "contactPersonEmail" => $request->contactPersonEmail,
-            "contactPersonPhone" => $request->contactPersonPhone,
+            "contactPersonEmail" => $request->emailAddress,
             // "totalReceiptSent" => $request->totalReceiptSent,
             // "status" => $request->status,
             // "verificationStatus" => $request->verificationStatus,
@@ -184,7 +182,16 @@ class CompanyController extends Controller
             // "verificationStage" => $request->verificationStage,
             // "aesKeyExpiration" => $request->aesKeyExpiration,
             "createdAt" => Carbon::now(),
-
+            "businessName" => $request->businessName,
+            "emailAddress" => $request->emailAddress,
+            "contactFullName" => $request->contactFullName, 
+            "contactPersonIdType" => $request->contactPersonIdType,
+            "contactPersonIdNumber" => $request->contactPersonIdNumber,
+            "legalName" => $request->legalName,
+            "phoneNumber" =>  $request->contactPersonPhone,
+            "address" => $request->address,
+            "contactPersonPhoneNumber" => $request->contactPersonPhone,
+        
         ];
 
          $jsonData = json_encode($DATA);
@@ -210,7 +217,7 @@ class CompanyController extends Controller
 
         return $DATA;
 
-        return redirect()->back();
+        return redirect('companies/show');
     }
 
     public function edit(Request $request)
