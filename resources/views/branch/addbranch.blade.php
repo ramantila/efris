@@ -76,7 +76,7 @@
                                         <div class="form-group">
 
                                             <label for="title">Select The company<span class="text-red">*</span></label>
-                                            <label for="title2">Company Type<span class="text-red">*</span></label>
+                                            <label for="title2">Company Name<span class="text-red">*</span></label>
                                             <select class="form-control select2" name="companyId" required="">
                                                 <option value="">Select Package Type</option>
                                                 @foreach($company as $key)

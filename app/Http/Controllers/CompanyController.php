@@ -121,7 +121,26 @@ class CompanyController extends Controller
 
         $packages =  json_decode($result, true);
 
-        return view('company.search', compact('company', 'tinNumber', 'packages'));
+        $URL = $BASE_URL.'company-types';
+        $CURL =  curl_init();
+        curl_setopt($CURL, CURLOPT_URL, $URL);
+        curl_setopt($CURL, CURLOPT_HTTPHEADER, $HEADERS);
+        curl_setopt($CURL, CURLOPT_RETURNTRANSFER, true);
+
+        try {
+            $result = curl_exec($CURL);
+            if (curl_errno($CURL)){
+                throw new \Exception(curl_error($CURL));
+            }
+            curl_close($CURL);
+        }
+        catch (\Exception $e){
+
+        }
+
+        $companytype =  json_decode($result,true);
+
+        return view('company.search', compact('company', 'tinNumber', 'packages','companytype'));
     }
 
 
@@ -151,6 +170,8 @@ class CompanyController extends Controller
         }
 
         $companyTypes =  json_decode($result, true);
+
+
 
         return view('company.addcompany', compact('companyTypes'));
     }
@@ -184,14 +205,14 @@ class CompanyController extends Controller
             "createdAt" => Carbon::now(),
             "businessName" => $request->businessName,
             "emailAddress" => $request->emailAddress,
-            "contactFullName" => $request->contactFullName, 
+            "contactFullName" => $request->contactFullName,
             "contactPersonIdType" => $request->contactPersonIdType,
             "contactPersonIdNumber" => $request->contactPersonIdNumber,
             "legalName" => $request->legalName,
             "phoneNumber" =>  $request->contactPersonPhone,
             "address" => $request->address,
             "contactPersonPhoneNumber" => $request->contactPersonPhone,
-        
+
         ];
 
          $jsonData = json_encode($DATA);
@@ -215,7 +236,9 @@ class CompanyController extends Controller
 
         $response =  json_decode($result);
 
-        return $DATA;
+        // return $DATA;
+
+
 
         return redirect('companies/show');
     }

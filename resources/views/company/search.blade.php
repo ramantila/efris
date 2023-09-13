@@ -123,14 +123,30 @@
                     <!-- One "tab" for each step in the form: -->
                     <b>
                         <div class="tab">Company / Business Name:
-                            <p><input placeholder="Company name..." value="{{ $company->businessName }}"
-                                    oninput="this.className = ''" name="businessName" readonly></p>
+                            <p><input placeholder="Company name..." value="{{ $company->businessName }}" oninput="this.className = ''" name='businessName' readonly></p>
 
-                            <p>Address:<input placeholder="Address..." value="{{ $company->address }}"
-                                    oninput="this.className = ''" name="address"></p>
+                            <p>Address<input placeholder='Address' value={{ $company->address }}
+                                    oninput="this.className = ''" name='address'></p>
 
-                            <p>Company Type Name:<input placeholder="Company Type Name" oninput="this.className = ''"
-                                    name="companyTypeName"></p>
+                                    {{-- <div class="tab">company Type Name: --}}
+
+                                        <div class="form-group">
+                                            <label for="title2">Company Type Name<span class="text-red">*</span></label>
+                                            <select class="form-control select2" name="companyTypeName"
+                                                onselect="this.className = ''" required="">
+                                                <option value="">Select company Type</option>
+                                                @foreach ($companytype as $key)
+                                                    <option value="{{ $key['id'] }}">{{ $key['name'] }}</option>
+                                                @endforeach
+                                            </select>
+                                        </div>
+
+                                    {{-- </div> --}}
+
+
+
+                            {{-- <p>Company Type Name:<input placeholder="Company Type Name" oninput="this.className = ''"
+                                    name="companyTypeName"></p> --}}
 
 
                             <p>Legal Name:<input placeholder="Legal Name" value="{{ $company->legalName }}"
@@ -174,22 +190,18 @@
 
                         </div>
                         <div class="tab">Package type:
-                            {{-- <p><input placeholder="Package Name" value="" oninput="this.className = ''" name="dd">
-                            </p>
-                            <p><input placeholder="mm" value="" oninput="this.className = ''" name="nn">
-                            </p> --}}
+
                             <div class="form-group">
                                 <label for="title2">Package Name<span class="text-red">*</span></label>
                                 <select class="form-control select2" name="companyType"
-                                    onselect="this.className = '' required="">
+                                    onselect="this.className = ''" required="">
                                     <option value="">Select Package Type</option>
                                     @foreach ($packages as $key)
                                         <option value="{{ $key['id'] }}">{{ $key['name'] }}</option>
                                     @endforeach
                                 </select>
                             </div>
-                            {{-- <p><input placeholder="yyyy"value="" oninput="this.className = ''" name="yyyy">
-                            </p> --}}
+
                         </div>
                         <div class="tab">Other Details:
                             <p>Tax Region<input placeholder="Tax Region..." value="" oninput="this.className = ''"
