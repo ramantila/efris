@@ -210,7 +210,7 @@ class CompanyController extends Controller
 
         // return $DATA;
 
-        return redirect()->back();
+        return redirect('companies/show');
     }
 
     public function edit(Request $request)
