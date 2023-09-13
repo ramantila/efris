@@ -117,19 +117,20 @@
 
         <div class="dt-responsive">
             @if ($tinNumber != '')
-                <form id="regForm" action="/action_page.php">
+                <form id="regForm"action="{{ url('companies/store') }}" method="POST">
+                    @csrf
                     <h1>Registration Process:</h1>
                     <!-- One "tab" for each step in the form: -->
                     <b>
                         <div class="tab">Company Name:
                             <p><input placeholder="Company name..." value="{{ $company->businessName }}"
-                                    oninput="this.className = ''" name="fname" readonly></p>
+                                    oninput="this.className = ''" name="companyName" readonly></p>
                             <p>Address:<input placeholder="Address..." value="{{ $company->address }}"
-                                    oninput="this.className = ''" name="lname" readonly></p>
+                                    oninput="this.className = ''" name="taxOffice" readonly></p>
                             <p>Legal Name:<input placeholder="Legal Name" value="{{ $company->legalName }}"
                                     oninput="this.className = ''" name="fname" readonly></p>
                             <p>Tin:<input placeholder="Tin..." value="{{ $company->tin }}" oninput="this.className = ''"
-                                    name="lname" readonly>
+                                    name="tinNumber" readonly>
                             </p>
                             <p>Tax Payer status:<input placeholder="Company status" value="{{ $company->taxpayerStatus }}"
                                     oninput="this.className = ''" name="fname" readonly></p>
@@ -141,11 +142,11 @@
                         </div>
                         <div class="tab">Contact Info:
                             <p>Contact Person:<input placeholder="Contact person..." value="{{ $company->contactNumber }}"
-                                    oninput="this.className = ''" name="email" readonly></p>
+                                    oninput="this.className = ''" name="contactPersonPhone" readonly></p>
                             <p>Contact Mobile<input placeholder="Phone..." value="{{ $company->contactMobile }}"
                                     this.className='' name="phone" readonly></p>
                             <p>Representative Name:<input placeholder="Representative Name..." value=""
-                                    this.className='' name="phone"></p>
+                                    this.className='' name="contactPersonName"></p>
 
                             <p>Representative Contact:<input placeholder="Phone..." value="" this.className=''
                                     name="phone"></p>

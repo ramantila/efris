@@ -2,6 +2,7 @@
 
 use Illuminate\Support\Facades\Route;
 
+
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -150,6 +151,8 @@ Route::group(['prefix' => 'efris/users'], function () {
     Route::get('view', [App\Http\Controllers\UserController::class, 'index']);
     Route::get('create', [App\Http\Controllers\UserController::class, 'create']);
     Route::post('store', [App\Http\Controllers\UserController::class, 'store']);
+    Route::get('userdetails/{id}', [App\Http\Controllers\UserController::class, 'userdetail']);
+
     Route::get('edit/{id}', [App\Http\Controllers\UserController::class, 'edit']);
     Route::post('update/{id}', [App\Http\Controllers\UserController::class, 'update']);
     Route::post('change-password/update/{id}', [App\Http\Controllers\UserController::class, 'changePassword']);

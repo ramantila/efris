@@ -70,10 +70,9 @@
                                         <th style="width: 60px;">Full Name</th>
                                         <th style="width: 60px;">Email </th>
                                         <th style="width: 63px;">Phone no</th>
-                                        <th style="width: 63px;">Registration date</th>
+                                        {{-- <th style="width: 63px;">Registration date</th> --}}
                                         <th style="width: 60px;">Role</th>
-                                        {{--  <th style="width: 60px;">No of Branches</th>
-                                        <th style="width: 63px;">Created By</th>  --}}
+
                                         <th style="width: 63px;">Action</th>
                                     </tr>
                                 </thead>
@@ -84,7 +83,6 @@
                                         <td>{{ $key['fullName'] }}</td>
                                         <td>{{ $key['email'] }}</td>
                                         <td>{{ $key['phoneNumber'] }}</td>
-                                        <td>{{ $key['registrationDate'] }}</td>
                                         <td>{{ $key['role'] }}</td>
 
                                         <td class="text-center">
@@ -98,7 +96,7 @@
 
 
                                                     <a class="dropdown-item"
-                                                        href="{{ url('companies/details/' . $key['id']) }}"><i
+                                                        href="{{ url('efris/users/userdetails/' . $key['id']) }}"><i
                                                             class="ik ik-edit"></i> View </a>
 
                                                     <a class="dropdown-item" href="#accountEdit" data-toggle="modal"

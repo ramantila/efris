@@ -7,7 +7,7 @@
 
 
         <div class=" @if (Request::is('reports/*')) active open @endif nav-item  has-sub">
-            <a href="#"><i class="ik ik-clipboard"></i><span>Comapany</span> </a>
+            <a href="#"><i class="ik ik-clipboard"></i><span>Company</span> </a>
             <div class="submenu-content">
                 <a href="{{ url('companies/show') }}"
                     class="menu-item @if (Request::is('')) active @endif">Company</a>
@@ -149,7 +149,7 @@
             <a href="{{ url('efris/product-catalogue/view') }}"><i class="ik ik-command"></i><span>Products
                     Catelog</span></a>
         </div> --}}
-        {{-- 
+        {{--
         <div class="@if (Request::is('packages-type/*')) active @endif nav-item">
             <a href="{{ url('efris/users/view') }}"><i class="ik ik-command"></i><span>Users</span></a>
         </div> --}}

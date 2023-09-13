@@ -167,7 +167,7 @@ class CompanyController extends Controller
             'Authorization: Bearer ' . Session::get('token')
         );
 
-        $DATA = [
+             $DATA = [
             "companyName" => $request->companyName,
             "companyType" => $request->companyType,
             "companyTypeName" => $request->companyTypeName,
@@ -187,7 +187,7 @@ class CompanyController extends Controller
 
         ];
 
-        $jsonData = json_encode($DATA);
+         $jsonData = json_encode($DATA);
 
         $CURL = curl_init($BASE_URL . 'companies');
         curl_setopt($CURL, CURLOPT_POST, true);
@@ -208,7 +208,7 @@ class CompanyController extends Controller
 
         $response =  json_decode($result);
 
-        return $DATA;
+        // return $DATA;
 
         return redirect()->back();
     }
