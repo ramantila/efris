@@ -168,15 +168,13 @@ class CompanyController extends Controller
         );
 
              $DATA = [
-            "companyName" => $request->companyName,
             "companyType" => $request->companyType,
             "companyTypeName" => $request->companyTypeName,
-            "tinNumber" => $request->tinNumber,
-            "vrn" => $request->vrn,
+            "tin" => $request->tinNumber,
+            "vrn" => $request->tinNumber,
             "taxOffice" => $request->taxOffice,
             "contactPersonName" => $request->contactPersonName,
-            "contactPersonEmail" => $request->contactPersonEmail,
-            "contactPersonPhone" => $request->contactPersonPhone,
+            "contactPersonEmail" => $request->emailAddress,
             // "totalReceiptSent" => $request->totalReceiptSent,
             // "status" => $request->status,
             // "verificationStatus" => $request->verificationStatus,
@@ -184,6 +182,15 @@ class CompanyController extends Controller
             // "verificationStage" => $request->verificationStage,
             // "aesKeyExpiration" => $request->aesKeyExpiration,
             "createdAt" => Carbon::now(),
+            "businessName" => $request->companyName,
+            "emailAddress" => $request->emailAddress,
+            "contactFullName" => $request->contactFullName, 
+            "contactPersonIdType" => $request->companyType,
+            "legalName" => $request->legalName,
+            "phoneNumber" =>  $request->contactPersonPhone,
+            "address" => $request->address,
+            "contactPersonIdNumber" => 
+            "contactPersonPhoneNumber" => $request->contactPersonPhone,
 
         ];
 
@@ -206,7 +213,7 @@ class CompanyController extends Controller
         } catch (\Exception $e) {
         }
 
-        $response =  json_decode($result);
+        return $response =  json_decode($result);
 
         // return $DATA;
 
