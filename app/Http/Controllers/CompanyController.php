@@ -78,7 +78,7 @@ class CompanyController extends Controller
             'Authorization: Bearer ' . Session::get('token')
         );
 
-        $DATA = [
+      $DATA = [
             "tinNumber" => $request->tinNumber,
             "businessRegistrationNumber" => "",
         ];
@@ -102,7 +102,7 @@ class CompanyController extends Controller
         } catch (\Exception $e) {
         }
 
-        $company =  json_decode($result);
+           $company =  json_decode($result);
 
         $URL = $BASE_URL . 'packages';
         $CURL =  curl_init();
@@ -208,7 +208,7 @@ class CompanyController extends Controller
 
         $response =  json_decode($result);
 
-        // return $DATA;
+        return $DATA;
 
         return redirect()->back();
     }
