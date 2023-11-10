@@ -66,16 +66,16 @@
                                     <tr>
                                         <th style="width: 63px;">#</th>
                                         <th style="width: 63px;">Name</th>
-                                        <th style="width: 63px;">Branch Code</th>
                                         <th style="width: 63px;">Status</th>
-                                        <th style="width: 63px;">CompanyFk</th>
-                                        <th style="width: 63px;">Company Name</th>
-                                        <th style="width: 63px;">CreatedBy</th>
+                                        {{-- <th style="width: 63px;">Branch Id</th>--}}
 
-                                        <th style="width: 63px;">Created Name</th>
+                                        <th style="width: 63px;">Company Name</th>
+                                        {{-- <th style="width: 63px;">CreatedBy</th>
+
+                                        <th style="width: 63px;">Created Name</th>--}}
                                         <th style="width: 63px;">createdAt</th>
-                                        <th style="width: 63px;">updatedAt</th>
-                                        <th style="width: 63px;">MainBranch</th>
+                                        {{-- <th style="width: 63px;">updatedAt</th>
+                                        <th style="width: 63px;">MainBranch</th> --}}
                                         <th style="width: 63px;">Action</th>
 
                                     </tr>
@@ -84,16 +84,15 @@
                                     @foreach($branch as $index => $brn)
                                         <tr>
                                              <td>{{ $index+1 }}</td>
-                                            <td>{{ $brn['name'] }}</td>
-                                            <td>{{ $brn['branchCode'] }}</td>
+                                       <td>{{ $brn['branchName'] }}</td>
                                             <td>{{ $brn['status'] }}</td>
-                                            <td>{{ $brn['companyFk'] }}</td>
+                                            {{-- <td>{{ $brn['branchId'] }}</td>--}}
                                             <td>{{ $brn['companyName'] }}</td>
-                                            <td>{{ $brn['createdBy'] }}</td>
-                                            <td>{{ $brn['createdByName'] }}</td>
+                                            {{-- <td>{{ $brn['createdBy'] }}</td>
+                                            <td>{{ $brn['createdByName'] }}</td>--}}
                                             <td>{{ $brn['createdAt'] }}</td>
-                                            <td>{{ $brn['updatedAt'] }}</td>
-                                            <td>{{ $brn['mainBranch'] }}</td>
+                                       {{--   <td>{{ $brn['updatedAt'] }}</td>
+                                            <td>{{ $brn['mainBranch'] }}</td> --}}
 
 
                                             <td>
@@ -118,7 +117,7 @@
 
 
                         </table>
-                       
+
                     </div>
                 </div>
             </div>

@@ -32,7 +32,7 @@ class BranchController extends Controller
 
         }
 
-      $branch =  json_decode($result,true);
+     $branch =  json_decode($result,true);
 
 
         return view('branch.show',compact('branch'));
@@ -165,7 +165,7 @@ class BranchController extends Controller
       $company =  json_decode($result,true);
 
     //   return $company;
-      
+
         return view('branch.edit', compact('branch','company','branch_id'));
     }
 
@@ -175,7 +175,7 @@ class BranchController extends Controller
     {
 
         $url = 'https://api.webefris.co.ug/api/v1/branches/'.$id; // Replace with your API endpoint URL
-       
+
         $HEADERS = array(
             'Authorization: Bearer '.Session::get('token')
         );
@@ -205,7 +205,7 @@ class BranchController extends Controller
             // Process the response
             $responseData = json_decode($response, true);
             // ...
-            return $responseData;
+            // return $responseData;
             return redirect('efris/branches/view',);
         }
 

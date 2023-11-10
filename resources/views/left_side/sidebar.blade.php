@@ -29,9 +29,13 @@
             <a href="#"><i class="ik ik-package"></i><span>packages</span> </a>
             <div class="submenu-content">
 
-
+                <a href="{{ url('efris/package/view') }}"
+                    class="menu-item @if (Request::is()) active @endif">View Packages </a>
                 <a href="{{ url('packages-type/view') }}"
                     class="menu-item @if (Request::is()) active @endif">Package type </a>
+
+
+
 
 
             </div>
@@ -100,9 +104,11 @@
                 <div class="nav-item  has-sub">
                     <a href="javascript:void(0)" class="menu-item">Product Codes</a>
                     <div class="submenu-content">
-                        <a href="{{ url('efris/product/category-segment') }}" class="menu-item">Product Category Segment</a>
+                        <a href="{{ url('efris/product/category-segment') }}" class="menu-item">Product Category
+                            Segment</a>
 
-                        <a href="{{ url('efris/product/segment-family') }}" class="menu-item">Product Segment Family</a>
+                        <a href="{{ url('efris/product/segment-family') }}" class="menu-item">Product Segment
+                            Family</a>
 
                         <a href="{{ url('efris/product/segment-class') }}" class="menu-item">Product Segment Class</a>
 

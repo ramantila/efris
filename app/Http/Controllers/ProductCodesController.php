@@ -8,7 +8,7 @@ use Illuminate\Http\Request;
 class ProductCodesController extends Controller
 {
     public function categorySegment(){
-    
+
         $BASE_URL = 'https://api.webefris.co.ug/api/v1/';
 
         $HEADERS = array(
@@ -155,4 +155,8 @@ class ProductCodesController extends Controller
 
         return view('product_codes.product_codes',compact('codes'));
     }
+
+
+
+   
 }

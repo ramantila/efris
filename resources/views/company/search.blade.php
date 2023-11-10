@@ -123,25 +123,26 @@
                     <!-- One "tab" for each step in the form: -->
                     <b>
                         <div class="tab">Company / Business Name:
-                            <p><input placeholder="Company name..." value="{{ $company->businessName }}" oninput="this.className = ''" name='businessName' readonly></p>
+                            <p><input placeholder="Company name..." value="{{ $company->businessName }}"
+                                    oninput="this.className = ''" name='businessName' readonly></p>
 
                             <p>Address<input placeholder='Address' value={{ $company->address }}
                                     oninput="this.className = ''" name='address'></p>
 
-                                    {{-- <div class="tab">company Type Name: --}}
+                            {{-- <div class="tab">company Type Name: --}}
 
-                                        <div class="form-group">
-                                            <label for="title2">Company Type Name<span class="text-red">*</span></label>
-                                            <select class="form-control select2" name="companyTypeName"
-                                                onselect="this.className = ''" required="">
-                                                <option value="">Select company Type</option>
-                                                @foreach ($companytype as $key)
-                                                    <option value="{{ $key['id'] }}">{{ $key['name'] }}</option>
-                                                @endforeach
-                                            </select>
-                                        </div>
+                            <div class="form-group">
+                                <label for="title2">Company Type Name<span class="text-red">*</span></label>
+                                <select class="form-control select2" name="companyTypeName" onselect="this.className = ''"
+                                    required="" style="width: 80%">
+                                    <option value="">Select Company Type</option>
+                                    @foreach ($companytype as $key)
+                                        <option value="{{ $key['id'] }}">{{ $key['name'] }}</option>
+                                    @endforeach
+                                </select>
+                            </div>
 
-                                    {{-- </div> --}}
+                            {{-- </div> --}}
 
 
 
@@ -179,8 +180,8 @@
                             <p>Representative Name:<input placeholder="Representative Name..." value=""
                                     this.className='' name="contactFullName"></p>
 
-                            <p>Contact Person Name:<input placeholder="Contact Person Name" value=""
-                                    this.className='' name="contactPersonName"></p>
+                            <p>Contact Person Name:<input placeholder="Contact Person Name" value="" this.className=''
+                                    name="contactPersonName"></p>
 
                             <p>Email Address:<input placeholder="Email Address" value="" type="email"
                                     this.className='' name="emailAddress"></p>
@@ -193,8 +194,8 @@
 
                             <div class="form-group">
                                 <label for="title2">Package Name<span class="text-red">*</span></label>
-                                <select class="form-control select2" name="companyType"
-                                    onselect="this.className = ''" required="">
+                                <select class="form-control select2" name="companyType" onselect="this.className = ''"
+                                    required="">
                                     <option value="">Select Package Type</option>
                                     @foreach ($packages as $key)
                                         <option value="{{ $key['id'] }}">{{ $key['name'] }}</option>

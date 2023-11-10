@@ -78,7 +78,7 @@ src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.9.4/Chart.js">
             </div>
         </div>
 
-        <div class="row">
+        {{-- <div class="row">
             <div class="col-xl-12 col-md-12">
                 <div class="card table-card">
                     <div class="card-header">
@@ -111,13 +111,13 @@ src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.9.4/Chart.js">
                     </div>
                 </div>
             </div>
-        </div>
+        </div> --}}
 
-        <div class="row">
+        {{-- <div class="row">
             <div class="col-xl-6 col-md-6">
                 <div class="card table-card">
                     <div class="card-header">
-                        <h3>Recent Sales on chart</h3>
+                        <h3>Recent Sales on chart</h3> --}}
                         {{-- <canvas id="myChart" style="width:100%;max-width:700px"></canvas> --}}
 
 
@@ -128,7 +128,7 @@ src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.9.4/Chart.js">
                                 <li><i class="ik ik-x close-card"></i></li>
                             </ul>
                         </div> --}}
-                    </div>
+                    {{-- </div> --}}
                     {{-- <div class="card-block">
                         <div class="table-responsive">
                             <table class="table table-hover mb-0">
@@ -149,9 +149,9 @@ src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.9.4/Chart.js">
                             </table>
                         </div>
                     </div> --}}
-                </div>
-            </div>
-
+                {{-- </div> --}}
+            {{-- </div> --}}
+{{--
             <div class="col-xl-6 col-md-6">
                 <div class="card table-card">
                     <div class="card-header">
@@ -223,8 +223,8 @@ src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.9.4/Chart.js">
                         </div>
                     </div>
                 </div>
-            </div>
-        </div>
+            </div>--}}
+        {{-- </div> --}}
     </div>
 
     <script>

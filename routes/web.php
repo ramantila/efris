@@ -1,6 +1,7 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+// use Illuminate\Support\Facades\Auth;
 
 
 /*
@@ -27,6 +28,8 @@ Route::get('/home', [App\Http\Controllers\HomeController::class, 'postLogin'])->
 Route::get('/dashboard', function () {
     return view('dashboard');
 });
+// Route::middleware('auth:api')->group(function () {
+    // Your protected routes go here
 
 //Route for Package
 Route::group(['prefix' => 'packages-type'], function () {
@@ -47,7 +50,22 @@ Route::group(['prefix' => 'companies'], function () {
     Route::post('data', [App\Http\Controllers\CompanyController::class, 'search']);
     Route::get('searchview', [App\Http\Controllers\CompanyController::class, 'search1']);
     Route::get('details/{id}', [App\Http\Controllers\CompanyController::class, 'details']);
+    Route::get('step1', [App\Http\Controllers\CompanyController::class, 'step1']);
+    Route::post('postStep1', [App\Http\Controllers\CompanyController::class, 'postStep1']);
+    Route::get('step2',[App\Http\Controllers\CompanyController::class, 'step2']);
+    Route::post('step2', [App\Http\Controllers\CompanyController::class, 'postStep2']);
+    Route::get('step3',[App\Http\Controllers\CompanyController::class, 'step3']);
+    Route::post('four', [App\Http\Controllers\CompanyController::class, 'postStep3']);
+    Route::get('step4',[App\Http\Controllers\CompanyController::class, 'step4']);
+    Route::post('step3_add4', [App\Http\Controllers\CompanyController::class, 'postStep4']);
+    Route::get('/companydelete/{id}', [App\Http\Controllers\CompanyController::class, 'companydelete']);
+    Route::get('/modeselection/{id}', [App\Http\Controllers\CompanyController::class, 'mode']);
+    Route::get('/modeselection_update/{id}', [App\Http\Controllers\CompanyController::class, 'Modeselection_update']);
+    Route::post('/modeselectionsecond/{id}', [App\Http\Controllers\CompanyController::class, 'modeupdate']);
+    Route::post('/modeselections/', [App\Http\Controllers\CompanyController::class, 'update']);
 
+    Route::get('/completeprofile/{id}', [App\Http\Controllers\CompanyController::class, 'completeprofile']);
+    Route::post('/completeprofile/', [App\Http\Controllers\CompanyController::class, 'complete_update']);
     //Route for Currency
     Route::get('get-currency', [App\Http\Controllers\CompanyController::class, 'getCurrency']);
     Route::post('{id}/storecurrency', [App\Http\Controllers\CompanyController::class, 'storeCurrrency']);
@@ -140,9 +158,9 @@ Route::group(['prefix' => 'efris/product-catalogue'], function () {
 Route::group(['prefix' => 'efris/companyproducts'], function () {
     Route::get('view', [App\Http\Controllers\CompamyproductController::class, 'index']);
     Route::get('create', [App\Http\Controllers\CompamyproductController::class, 'create']);
-    Route::post('store', [App\Http\Controllers\CompamproductController::class, 'store']);
-    Route::get('edit/{id}', [App\Http\Controllers\CompamproductController::class, 'edit']);
-    Route::post('update/{id}', [App\Http\Controllers\CompamproductController::class, 'update']);
+    Route::post('store', [App\Http\Controllers\CompamyproductController::class, 'store']);
+    Route::get('edit/{id}', [App\Http\Controllers\CompamyproductController::class, 'edit']);
+    Route::post('update/{id}', [App\Http\Controllers\CompamyproductController::class, 'update']);
 });
 
 // users
@@ -166,3 +184,4 @@ Route::group(['prefix' => 'efris/sales'], function () {
     Route::get('edit/{id}', [App\Http\Controllers\UserController::class, 'edit']);
     Route::post('update/{id}', [App\Http\Controllers\UserController::class, 'update']);
 });
+// });

@@ -62,7 +62,7 @@ class UserController extends Controller
         catch (\Exception $e){
 
         }
-
+        
          $user =  json_decode($result,true);
 
 

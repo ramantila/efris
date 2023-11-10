@@ -7,6 +7,8 @@ use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use Illuminate\Support\Carbon;
 use Illuminate\Support\Facades\Session;
+use Illuminate\Support\Facades\Http;
+
 
 class CompanyController extends Controller
 {
@@ -50,7 +52,7 @@ class CompanyController extends Controller
         } catch (\Exception $e) {
         }
 
-        $company =  json_decode($result, true);
+       $company =  json_decode($result, true);
 
 
         return view('company.show', compact('company'));
@@ -102,7 +104,7 @@ class CompanyController extends Controller
         } catch (\Exception $e) {
         }
 
-           $company =  json_decode($result);
+         $company =  json_decode($result);
 
         $URL = $BASE_URL . 'packages';
         $CURL =  curl_init();
@@ -138,11 +140,208 @@ class CompanyController extends Controller
 
         }
 
-        $companytype =  json_decode($result,true);
+         $companytype =  json_decode($result,true);
 
-        return view('company.search', compact('company', 'tinNumber', 'packages','companytype'));
+        return view('step.step1', compact('company', 'tinNumber', 'packages','companytype'));
     }
 
+    public function completeprofile(Request $request,$id)
+    {
+
+        $BASE_URL = 'https://api.webefris.co.ug/api/v1/';
+
+        $HEADERS = array(
+            'Authorization: Bearer ' . Session::get('token')
+        );
+
+        $URL = $BASE_URL . 'companies/'.$id;
+        $CURL =  curl_init();
+        curl_setopt($CURL, CURLOPT_URL, $URL);
+        curl_setopt($CURL, CURLOPT_HTTPHEADER, $HEADERS);
+        curl_setopt($CURL, CURLOPT_RETURNTRANSFER, true);
+
+        try {
+            $result = curl_exec($CURL);
+            if (curl_errno($CURL)) {
+                throw new \Exception(curl_error($CURL));
+            }
+            curl_close($CURL);
+        } catch (\Exception $e) {
+        }
+
+        $company =  json_decode($result,true);
+
+        return view('company.completeprofile', compact('company','id'));
+    }
+
+
+        public function complete_update(Request $request)
+    {
+
+        $BASE_URL = 'https://api.webefris.co.ug/api/v1/';
+
+        $HEADERS = array(
+            'Accept: Application/json',
+            'Content-type: Application/json',
+            'Authorization: Bearer ' . Session::get('token')
+        );
+
+        $DATA = [
+            "company" => intval($request->company),
+
+            'shortCode' => $request->shortCode,
+            'smsReceipts' => $request->smsReceipts,
+
+        ];
+
+         $jsonData = json_encode($DATA);
+
+        $CURL = curl_init($BASE_URL . 'companies/complete-profile');
+        curl_setopt($CURL, CURLOPT_POST, true);
+        curl_setopt($CURL, CURLOPT_HTTPHEADER, $HEADERS);
+        curl_setopt($CURL, CURLOPT_SSL_VERIFYPEER, 0);
+        curl_setopt($CURL, CURLOPT_SSL_VERIFYHOST, 0);
+        curl_setopt($CURL, CURLOPT_POSTFIELDS, $jsonData);
+        curl_setopt($CURL, CURLOPT_RETURNTRANSFER, true);
+
+        try {
+            $result = curl_exec($CURL);
+            if (curl_errno($CURL)) {
+                throw new \Exception(curl_error($CURL));
+            }
+            curl_close($CURL);
+        } catch (\Exception $e) {
+        }
+
+      return   $response =  json_decode($result);
+
+
+            return redirect('companies/show');
+        }
+
+
+
+
+
+    public function Modeselection_update(Request $request,$id)
+    {
+
+        $BASE_URL = 'https://api.webefris.co.ug/api/v1/';
+
+        $HEADERS = array(
+            'Authorization: Bearer '.Session::get('token')
+        );
+
+        $URL = $BASE_URL . 'companies/'.$id;
+        $CURL =  curl_init();
+        curl_setopt($CURL, CURLOPT_URL, $URL);
+        curl_setopt($CURL, CURLOPT_HTTPHEADER, $HEADERS);
+        curl_setopt($CURL, CURLOPT_RETURNTRANSFER, true);
+
+        try {
+            $result = curl_exec($CURL);
+            if (curl_errno($CURL)) {
+                throw new \Exception(curl_error($CURL));
+            }
+            curl_close($CURL);
+        } catch (\Exception $e) {
+        }
+
+
+        $company =  json_decode($result, true);
+
+        return view('company.modeupdate', compact('company','id'));
+    }
+
+    public function update(Request $request)
+    {
+
+        $BASE_URL = 'https://api.webefris.co.ug/api/v1/';
+
+        $HEADERS = array(
+            'Accept: Application/json',
+            'Content-type: Application/json',
+            'Authorization: Bearer ' . Session::get('token')
+        );
+
+        $DATA = [
+            "company" => intval($request->company),
+            "mode" => $request->mode,
+
+
+        ];
+
+         $jsonData = json_encode($DATA);
+
+        $CURL = curl_init($BASE_URL . 'companies/mode');
+        curl_setopt($CURL, CURLOPT_POST, true);
+        curl_setopt($CURL, CURLOPT_HTTPHEADER, $HEADERS);
+        curl_setopt($CURL, CURLOPT_SSL_VERIFYPEER, 0);
+        curl_setopt($CURL, CURLOPT_SSL_VERIFYHOST, 0);
+        curl_setopt($CURL, CURLOPT_POSTFIELDS, $jsonData);
+        curl_setopt($CURL, CURLOPT_RETURNTRANSFER, true);
+
+        try {
+            $result = curl_exec($CURL);
+            if (curl_errno($CURL)) {
+                throw new \Exception(curl_error($CURL));
+            }
+            curl_close($CURL);
+        } catch (\Exception $e) {
+        }
+
+       return  $response =  json_decode($result);
+
+
+
+            return redirect('companies/show');
+        }
+
+
+    public function modeupdate(Request $request, $id)
+    {
+        $BASE_URL = 'https://api.webefris.co.ug/api/v1/';
+
+        $HEADERS = array(
+            'Accept: Application/json',
+            'Content-type: Application/json',
+            'Authorization: Bearer ' . Session::get('token')
+        );
+
+        $DATA = [
+            "company" => intval($request->company),
+
+            'deviceNumber' => $request->deviceNumber,
+            'baseUrl' =>"http://45.76.5.39:9880/efristcs/ws/tcsapp/getInformation",
+
+
+        ];
+
+         $jsonData = json_encode($DATA);
+
+        $CURL = curl_init($BASE_URL . 'companies/mode-offline');
+        curl_setopt($CURL, CURLOPT_POST, true);
+        curl_setopt($CURL, CURLOPT_HTTPHEADER, $HEADERS);
+        curl_setopt($CURL, CURLOPT_SSL_VERIFYPEER, 0);
+        curl_setopt($CURL, CURLOPT_SSL_VERIFYHOST, 0);
+        curl_setopt($CURL, CURLOPT_POSTFIELDS, $jsonData);
+        curl_setopt($CURL, CURLOPT_RETURNTRANSFER, true);
+
+        try {
+            $result = curl_exec($CURL);
+            if (curl_errno($CURL)) {
+                throw new \Exception(curl_error($CURL));
+            }
+            curl_close($CURL);
+        } catch (\Exception $e) {
+        }
+
+       return  $response =  json_decode($result);
+
+
+
+            return redirect('companies/show');
+        }
 
 
     public function create2(Request $request)
@@ -189,29 +388,14 @@ class CompanyController extends Controller
         );
 
         $DATA = [
-            "companyType" => $request->companyType,
-            "companyTypeName" => $request->companyTypeName,
+            "name" => $request->name,
+            "companyType" => intval($request->companyType),
             "tin" => $request->tin,
-            "vrn" => $request->tin,
-            "taxOffice" => $request->taxOffice,
-            "contactPersonName" => $request->contactPersonName,
             "contactPersonEmail" => $request->emailAddress,
-            // "totalReceiptSent" => $request->totalReceiptSent,
-            // "status" => $request->status,
-            // "verificationStatus" => $request->verificationStatus,
-            // "verificationStatusDescription" => $request->verificationStatusDescription,
-            // "verificationStage" => $request->verificationStage,
-            // "aesKeyExpiration" => $request->aesKeyExpiration,
-            "createdAt" => Carbon::now(),
-            "businessName" => $request->businessName,
-            "emailAddress" => $request->emailAddress,
             "contactFullName" => $request->contactFullName,
             "contactPersonIdType" => $request->contactPersonIdType,
             "contactPersonIdNumber" => $request->contactPersonIdNumber,
-            "legalName" => $request->legalName,
-            "phoneNumber" =>  $request->contactPersonPhone,
-            "address" => $request->address,
-            "contactPersonPhoneNumber" => $request->contactPersonPhone,
+            "contactPersonPhoneNumber" => $request->contactPersonPhoneNumber,
 
         ];
 
@@ -234,15 +418,40 @@ class CompanyController extends Controller
         } catch (\Exception $e) {
         }
 
-        $response =  json_decode($result);
+         $response =  json_decode($result);
 
-        // return $DATA;
+
 
 
 
         return redirect('companies/show');
     }
 
+    public function companydelete(Request $request, $id)
+    {
+              $url = 'https://api.webefris.co.ug/api/v1/companies/'.$id; // Replace with your API endpoint
+              $HEADERS = array(
+            'Authorization: Bearer ' . Session::get('token')
+        );
+
+            // Send the DELETE request
+            $response = Http::delete($url);
+
+            // Check the response and handle it as needed
+            if ($response->successful()) {
+            // "Request was successful (HTTP status code 2xx)";
+                $data = $response->json(); // Retrieve the response data
+                // Handle success
+            } else {
+                // Request failed (HTTP status code other than 2xx)
+                $statusCode = $response->status(); // Get the HTTP status code
+                $error = $response->json(); // Get error data if available
+                // Handle the error
+            }
+
+            return view('company.modeselection');
+
+    }
     public function edit(Request $request)
     {
 
@@ -272,38 +481,6 @@ class CompanyController extends Controller
         return view('company.edit', compact('companyedit'));
     }
 
-
-
-    public function update()
-    {
-
-        $url = 'https://api.webefris.co.ug/api/v1/companies'; // Replace with your API endpoint URL
-        $data = [
-            'key1' => 'value1',
-
-            'key2' => 'value2'
-        ]; // Replace with the data you want to update
-
-        $ch = curl_init($url);
-        curl_setopt($ch, CURLOPT_CUSTOMREQUEST, 'PUT'); // Use PUT method for update
-        curl_setopt($ch, CURLOPT_POSTFIELDS, http_build_query($data)); // Pass the data to be updated
-        curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
-        $response = curl_exec($ch);
-        curl_close($ch);
-
-
-        if ($response === false) {
-            // Handle cURL error
-            $errorMessage = curl_error($ch);
-            // ...
-        } else {
-            // Process the response
-            $responseData = json_decode($response, true);
-            // ...
-
-            return redirect('');
-        }
-    }
 
     public function details($id)
     {
@@ -496,9 +673,211 @@ class CompanyController extends Controller
 
         }
 
-        return $response =  json_decode($result);
+         $response =  json_decode($result);
 
         return redirect()->back();
 
+    }
+
+    public function step1()
+    {
+        // {
+            $BASE_URL = 'https://api.webefris.co.ug/api/v1/';
+
+            $HEADERS = array(
+                'Authorization: Bearer ' . Session::get('token')
+            );
+
+            $URL = $BASE_URL . 'companies/';
+            $CURL =  curl_init();
+            curl_setopt($CURL, CURLOPT_URL, $URL);
+            curl_setopt($CURL, CURLOPT_HTTPHEADER, $HEADERS);
+            curl_setopt($CURL, CURLOPT_RETURNTRANSFER, true);
+
+            try {
+                $result = curl_exec($CURL);
+                if (curl_errno($CURL)) {
+                    throw new \Exception(curl_error($CURL));
+                }
+                curl_close($CURL);
+            } catch (\Exception $e) {
+            }
+
+          $company =  json_decode($result, true);
+
+            $URL = $BASE_URL . '/packages';
+            $CURL =  curl_init();
+            curl_setopt($CURL, CURLOPT_URL, $URL);
+            curl_setopt($CURL, CURLOPT_HTTPHEADER, $HEADERS);
+            curl_setopt($CURL, CURLOPT_RETURNTRANSFER, true);
+
+            try {
+                $result = curl_exec($CURL);
+                if (curl_errno($CURL)) {
+                    throw new \Exception(curl_error($CURL));
+                }
+                curl_close($CURL);
+            } catch (\Exception $e) {
+            }
+
+           $packages =  json_decode($result, true);
+        //    dd($packages);
+
+            $URL = $BASE_URL.'company-types';
+            $CURL =  curl_init();
+            curl_setopt($CURL, CURLOPT_URL, $URL);
+            curl_setopt($CURL, CURLOPT_HTTPHEADER, $HEADERS);
+            curl_setopt($CURL, CURLOPT_RETURNTRANSFER, true);
+
+            try {
+                $result = curl_exec($CURL);
+                if (curl_errno($CURL)){
+                    throw new \Exception(curl_error($CURL));
+                }
+                curl_close($CURL);
+            }
+            catch (\Exception $e){
+
+            }
+
+            $companytype =  json_decode($result,true);
+
+
+            return view('step.step1', compact('company', 'companytype','packages'));
+        }
+
+
+
+    public function postStep1(Request $request)
+    {
+        // Handle data submission for step 1
+        // You can validate the input and store it in the session for the next step
+        $request->session()->put('step1_data', $request->all());
+        return redirect('companies/step2');
+    }
+    public function mode($id)
+
+    {
+        $BASE_URL = 'https://api.webefris.co.ug/api/v1/';
+
+        $HEADERS = array(
+            'Authorization: Bearer ' . Session::get('token')
+        );
+
+        $URL = $BASE_URL . 'companies/'.$id;
+        $CURL =  curl_init();
+        curl_setopt($CURL, CURLOPT_URL, $URL);
+        curl_setopt($CURL, CURLOPT_HTTPHEADER, $HEADERS);
+        curl_setopt($CURL, CURLOPT_RETURNTRANSFER, true);
+
+        try {
+            $result = curl_exec($CURL);
+            if (curl_errno($CURL)) {
+                throw new \Exception(curl_error($CURL));
+            }
+            curl_close($CURL);
+        } catch (\Exception $e) {
+        }
+
+        $company =  json_decode($result, true);
+
+        $URL = $BASE_URL.'company-types';
+        $CURL =  curl_init();
+        curl_setopt($CURL, CURLOPT_URL, $URL);
+        curl_setopt($CURL, CURLOPT_HTTPHEADER, $HEADERS);
+        curl_setopt($CURL, CURLOPT_RETURNTRANSFER, true);
+
+        try {
+            $result = curl_exec($CURL);
+            if (curl_errno($CURL)){
+                throw new \Exception(curl_error($CURL));
+            }
+            curl_close($CURL);
+        }
+        catch (\Exception $e){
+
+        }
+
+        $companytype =  json_decode($result,true);
+
+        return view('company.modeselection',compact('company','companytype','id'));
+    }
+    public function step2()
+
+    {
+        $BASE_URL = 'https://api.webefris.co.ug/api/v1/';
+
+        $HEADERS = array(
+            'Authorization: Bearer ' . Session::get('token')
+        );
+
+        $URL = $BASE_URL . 'companies/';
+        $CURL =  curl_init();
+        curl_setopt($CURL, CURLOPT_URL, $URL);
+        curl_setopt($CURL, CURLOPT_HTTPHEADER, $HEADERS);
+        curl_setopt($CURL, CURLOPT_RETURNTRANSFER, true);
+
+        try {
+            $result = curl_exec($CURL);
+            if (curl_errno($CURL)) {
+                throw new \Exception(curl_error($CURL));
+            }
+            curl_close($CURL);
+        } catch (\Exception $e) {
+        }
+
+      $company =  json_decode($result, true);
+
+        $URL = $BASE_URL.'company-types';
+        $CURL =  curl_init();
+        curl_setopt($CURL, CURLOPT_URL, $URL);
+        curl_setopt($CURL, CURLOPT_HTTPHEADER, $HEADERS);
+        curl_setopt($CURL, CURLOPT_RETURNTRANSFER, true);
+
+        try {
+            $result = curl_exec($CURL);
+            if (curl_errno($CURL)){
+                throw new \Exception(curl_error($CURL));
+            }
+            curl_close($CURL);
+        }
+        catch (\Exception $e){
+
+        }
+
+        $companytype =  json_decode($result,true);
+        return view('step.step2',compact('company','companytype'));
+    }
+
+    public function postStep2(Request $request)
+    {
+        // Handle data submission for step 2
+        // Retrieve data from session (e.g., $data = $request->session()->get('step1_data');)
+        // Perform any additional processing
+        return redirect('companies/step3'); // Redirect to the next page to display the final result
+    }
+    public function step3()
+    {
+        return view('step.step3');
+    }
+
+    public function postStep3(Request $request)
+    {
+        // Handle data submission for step 2
+        // Retrieve data from session (e.g., $data = $request->session()->get('step1_data');)
+        // Perform any additional processing
+        return view('step.step4'); // Redirect to the next page to display the final result
+    }
+    public function step4()
+    {
+        return view('step.step4');
+    }
+
+    public function postStep4(Request $request)
+    {
+        // Handle data submission for step 2
+        // Retrieve data from session (e.g., $data = $request->session()->get('step1_data');)
+        // Perform any additional processing
+        return redirect('next-page'); // Redirect to the next page to display the final result
     }
 }

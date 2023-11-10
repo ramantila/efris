@@ -69,8 +69,8 @@
                                     <th style="width: 63px;">Company Type</th>
                                     <th style="width: 63px;">Company Type Name</th>
                                     <th style="width: 63px;">Tin</th>
-                                    <th style="width: 63px;">Vrn</th>
-                                    <th style="width: 63px;">Tax office</th>
+                                    {{-- <th style="width: 63px;">Vrn</th> --}}
+                                    {{-- <th style="width: 63px;">Tax office</th> --}}
                                     <th style="width: 63px;">Contact Person</th>
                                     <th style="width: 63px;">Contact Person Email</th>
                                     <th style="width: 63px;">Contact Phone</th>
@@ -94,8 +94,8 @@
                                         <td>{{ $com['companyType'] }}</td>
                                         <td>{{ $com['companyTypeName'] }}</td>
                                         <td>{{ $com['tinNumber'] }}</td>
-                                        <td>{{ $com['vrn'] }}</td>
-                                        <td>{{ $com['taxOffice'] }}</td>
+                                        {{-- <td>{{ $com['vrn'] }}</td> --}}
+                                         {{-- <td>{{ $com['taxOffice'] }}</td> --}}
                                         <td>{{ $com['contactPersonName'] }}</td>
                                         <td>{{ $com['contactPersonEmail'] }}</td>
                                         <td>{{ $com['contactPersonPhone'] }}</td>
@@ -127,8 +127,21 @@
                                                     href="{{ url('companies/edit/' . $com['id']) }}"><i
                                                             class="ik ik-edit"></i> Edit </a>
 
-                                                    <a class="dropdown-item" href="#accountEdit" data-toggle="modal"
-                                                        data-target="#delete{{ $com['id'] }}">
+
+                                                            <a class="dropdown-item"
+                                                            href="{{url ('companies/modeselection/' . $com['id']) }}"><i
+                                                                    class="ik ik-eye"></i> Mode offline </a>
+                                                                    <a class="dropdown-item"
+                                                                    href="{{url ('companies/modeselection_update/' . $com['id']) }}" data-bs-toggle="modal" data-bs-target="#exampleModal" ><i
+                                                                            class="ik ik-eye"></i> Mode update </a>
+
+                                                                            <a class="dropdown-item"
+                                                                            href="{{url ('companies/completeprofile/' . $com['id']) }}"><i
+                                                                                    class="ik ik-eye"></i> Complete Profile </a>
+
+
+                                                    <a class="dropdown-item"  href="{{ url('companies/companydelete/' . $com['id']) }}"
+                                                   >
                                                         <i class="ik ik-trash"></i> Delete </a>
 
                                                 </div>
@@ -138,7 +151,29 @@
                                     </tr>
                                 @endforeach
                             </tbody>
+{{-- <!-- Button trigger modal -->
+<button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal">
+    Launch demo modal
+  </button> --}}
 
+  <!-- Modal -->
+  <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="exampleModalLabel">Modal title</h5>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body">
+          ...
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+          <button type="button" class="btn btn-primary">Save changes</button>
+        </div>
+      </div>
+    </div>
+  </div>
                         </table>
                     </div>
                 </div>
